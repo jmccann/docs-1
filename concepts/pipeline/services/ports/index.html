@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/docs/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/docs/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/docs/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/docs/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/docs/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/docs/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/docs/favicons/android-96x196.png" sizes="96x196">
+<link rel="icon" type="image/png" href="/docs/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png"sizes="192x192">
+
+<title>Ports | Vela</title><meta property="og:title" content="Ports" />
+<meta property="og:description" content="This section contains information on the ports component for a service.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://go-vela.github.io/docs/concepts/pipeline/services/ports/" />
+<meta property="article:modified_time" content="2020-03-18T18:00:35+00:00" />
+<meta itemprop="name" content="Ports">
+<meta itemprop="description" content="This section contains information on the ports component for a service.
+">
+
+
+<meta itemprop="dateModified" content="2020-03-18T18:00:35&#43;00:00" />
+<meta itemprop="wordCount" content="86">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ports"/>
+<meta name="twitter:description" content="This section contains information on the ports component for a service.
+"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/docs/scss/main.min.70d8bad3cbfd44b25762dfb0cadb082e7e2c882cbc3cb7ff0b318df81507856d.css" as="style">
+<link href="/docs/scss/main.min.70d8bad3cbfd44b25762dfb0cadb082e7e2c882cbc3cb7ff0b318df81507856d.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+    <title>Ports | Vela</title>
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/docs/">
+		<span class="navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1500"><title>vela-inverse</title><polygon points="1477.22 329.54 1338.11 219.91 1349.56 43.16 1202.3 141.58 1037.73 76.07 1085.84 246.54 972.68 382.81 1149.67 389.74 1244.3 539.46 1305.58 373.27 1477.22 329.54" style="fill:#9e6bae"/><path d="M1174.75 635.12 757.57 1357.69a3.47 3.47.0 0 1-6 0L125.38 273.13a3.48 3.48.0 0 1 3-5.22H925.24l39.14-47.13L950.19 170.5H128.39A100.9 100.9.0 0 0 41 321.84L667.19 1406.4a100.88 100.88.0 0 0 174.74.0l391.61-678.27z" style="fill:#34c6f4"/><polygon points="1087.64 497.29 1038.27 495.36 754.56 986.75 395.9 365.54 288.13 365.54 754.56 1173.42 1117.58 544.66 1087.64 497.29" style="fill:#fff"/></svg></span><span class="text-uppercase font-weight-bold">Vela</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/docs/concepts/" ><span class="active">Concepts</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/install/" ><span>Install</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/usage/" ><span>Usage</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/plugins/" ><span>Plugins</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/templates/" ><span>Templates</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/api/" ><span>API</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/cli/" ><span>CLI</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/sdk/" ><span>SDK</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><div>
+    
+
+    <div class="search -navbar" id="search1">
+        <input id="search1input" type="text" placeholder="Search site..." v-model="txt" @blur="close()" maxlength="50">
+        <div class="search-results" :style="{'display': showresult?'block':'none'}">
+            <a v-for="item in result" :href="item.url">{{ item.display }}</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+    <script>
+        let mounted = function() {
+            
+            document.getElementById("search1input").addEventListener("keyup", e => {
+                this.txt = e.target.value;
+                this.search();
+            });
+            
+            axios.get('https:\/\/go-vela.github.io\/docs\/search\/index.json')
+                .then(function(response) {
+                    vuesearch1.bdd = response.data.results;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+        let close = function() {
+            
+            
+            setTimeout(function() {
+                vuesearch1.showresult = false;
+                vuesearch1.txt = '';
+            }, 300);
+        }
+        let search = function() {
+            
+            clearTimeout(this.timeoutID);
+            this.timeoutID = setTimeout(this.dosearch, 500);
+        }
+
+        let dosearch = function() {
+            
+            this.result = []; 
+            let words = this.txt.split(' '); 
+            let words2 = []; 
+            words.forEach(function(element) { 
+                if (element) {
+                    words2.push(element);
+                }
+            });
+            let r;
+            let resultmp;
+            words2.forEach(function(e) {
+                r = vuesearch1.bdd.filter(p => p.content.indexOf(e.toLowerCase()) !== -1);
+                if (vuesearch1.result.length === 0) {
+                    vuesearch1.result = r.slice();
+                    return;
+                }
+                resultmp = [];
+                vuesearch1.result.forEach(function(all1) {
+                    r.forEach(function(all2) {
+                        if (all1.url === all2.url) {
+                            resultmp.push(all1);
+                        }
+                    });
+                });
+                vuesearch1.result = resultmp.slice();
+            });
+            this.result = this.result.slice(0, 10); 
+            this.result = this.result.sort(function (a, b) {
+                return ('' + a.display).localeCompare(b.display);
+            })
+            this.showresult = (this.result.length > 0);
+        }
+        let vuesearch1 = new Vue({
+            el: '#search1',
+            data: {
+                txt: '',
+                timeoutID: 0,
+                showresult: false,
+                result: {},
+                bdd: []
+            },
+            mounted: mounted,
+            methods: {
+                close: close,
+                search: search,
+                dosearch: dosearch
+            }
+        });
+    </script>
+</div></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div>
+    <div class="search -sidebar" id="search2">
+        <input id="search2input" type="text" placeholder="Search site..." v-model="txt" @blur="close()" maxlength="50">
+        <div class="search-results" :style="{'display': showresult?'block':'none'}">
+            <a v-for="item in result" :href="item.url">{{ item.display }}</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script>
+    let mounted_sidebar = function() {
+        document.getElementById("search2input").addEventListener("keyup", e => {
+            this.txt = e.target.value;
+            this.search();
+        });
+        axios.get('https:\/\/go-vela.github.io\/docs\/search\/index.json')
+            .then(function(response) {
+                vuesearch2.bdd = response.data.results;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+    let close_sidebar = function() {
+        setTimeout(function() {
+            vuesearch2.showresult = false;
+            vuesearch2.txt = '';
+        }, 300);
+    }
+
+    let dosearch_sidebar = function() {
+        this.result = [];
+        var words = this.txt.split(' ');
+        var words2 = [];
+        words.forEach(function(element) {
+            if (element) {
+                words2.push(element);
+            }
+        });
+        var r;
+        var resultmp;
+        words2.forEach(function(e) {
+            r = vuesearch2.bdd.filter(p => p.content.indexOf(e.toLowerCase()) !== -1);
+            if (vuesearch2.result.length === 0) {
+                vuesearch2.result = r.slice();
+                return;
+            }
+            resultmp = [];
+            vuesearch2.result.forEach(function(all1) {
+                r.forEach(function(all2) {
+                    if (all1.url === all2.url) {
+                        resultmp.push(all1);
+                    }
+                });
+            });
+            vuesearch2.result = resultmp.slice();
+        });
+        this.result = this.result.slice(0, 10);
+        this.result = this.result.sort(function (a, b) {
+            return ('' + a.display).localeCompare(b.display);
+        })
+        this.showresult = (this.result.length > 0);
+    }
+    let vuesearch2 = new Vue({
+        el: '#search2',
+        data: {
+            txt: '',
+            timeoutID: 0,
+            showresult: false,
+            result: {},
+            bdd: []
+        },
+        mounted: mounted_sidebar,
+        methods: {
+            close: close_sidebar,
+            search: search,
+            dosearch: dosearch_sidebar
+        }
+    });
+</script>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Concepts</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-concepts">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/infrastructure/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Infrastructure</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-infrastructure">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/infrastructure/server/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Server</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-infrastructure-server">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-server-compiler" href="/docs/concepts/infrastructure/server/compiler/">Compiler</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-server-database" href="/docs/concepts/infrastructure/server/database/">Database</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-server-queue" href="/docs/concepts/infrastructure/server/queue/">Queue</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-server-secret" href="/docs/concepts/infrastructure/server/secret/">Secret</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-server-source" href="/docs/concepts/infrastructure/server/source/">Source</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/infrastructure/ui/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">UI</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-infrastructure-ui">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/infrastructure/worker/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Worker</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-infrastructure-worker">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-worker-executor" href="/docs/concepts/infrastructure/worker/executor/">Executor</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-worker-queue" href="/docs/concepts/infrastructure/worker/queue/">Queue</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-infrastructure-worker-runtime" href="/docs/concepts/infrastructure/worker/runtime/">Runtime</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/pipeline/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Pipeline</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-concepts-pipeline">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-metadata" href="/docs/concepts/pipeline/metadata/">Metadata</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/pipeline/secrets/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Secrets</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-pipeline-secrets">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-secrets-engine" href="/docs/concepts/pipeline/secrets/engine/">Engine</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-secrets-key" href="/docs/concepts/pipeline/secrets/key/">Key</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-secrets-origin" href="/docs/concepts/pipeline/secrets/origin/">Origin</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-secrets-type" href="/docs/concepts/pipeline/secrets/type/">Type</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/pipeline/services/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Services</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-concepts-pipeline-services">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-services-entrypoint" href="/docs/concepts/pipeline/services/entrypoint/">Entrypoint</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-services-environment" href="/docs/concepts/pipeline/services/environment/">Environment</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-services-image" href="/docs/concepts/pipeline/services/image/">Image</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-concepts-pipeline-services-ports" href="/docs/concepts/pipeline/services/ports/">Ports</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-services-pull" href="/docs/concepts/pipeline/services/pull/">Pull</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/pipeline/stages/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Stages</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-pipeline-stages">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-stages-needs" href="/docs/concepts/pipeline/stages/needs/">Needs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-stages-steps" href="/docs/concepts/pipeline/stages/steps/">Steps</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/pipeline/steps/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Steps</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-pipeline-steps">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-commands" href="/docs/concepts/pipeline/steps/commands/">Commands</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-detach" href="/docs/concepts/pipeline/steps/detach/">Detach</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-entrypoint" href="/docs/concepts/pipeline/steps/entrypoint/">Entrypoint</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-environment" href="/docs/concepts/pipeline/steps/environment/">Environment</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-image" href="/docs/concepts/pipeline/steps/image/">Image</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-parameters" href="/docs/concepts/pipeline/steps/parameters/">Parameters</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-privileged" href="/docs/concepts/pipeline/steps/privileged/">Privileged</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-pull" href="/docs/concepts/pipeline/steps/pull/">Pull</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-ruleset" href="/docs/concepts/pipeline/steps/ruleset/">Ruleset</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-secrets" href="/docs/concepts/pipeline/steps/secrets/">Secrets</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-steps-template" href="/docs/concepts/pipeline/steps/template/">Template</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/pipeline/templates/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Template</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-pipeline-templates">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-templates-source" href="/docs/concepts/pipeline/templates/source/">Source</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-templates-type" href="/docs/concepts/pipeline/templates/type/">Type</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-version" href="/docs/concepts/pipeline/version/">Version</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/pipeline/worker/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Worker</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-pipeline-worker">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-worker-flavor" href="/docs/concepts/pipeline/worker/flavor/">Flavor</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-pipeline-worker-platform" href="/docs/concepts/pipeline/worker/platform/">Platform</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-plugin" href="/docs/concepts/plugin/">Plugin</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/system/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">System</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-concepts-system">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-build" href="/docs/concepts/system/build/">Build</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-hook" href="/docs/concepts/system/hook/">Hook</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-log" href="/docs/concepts/system/log/">Log</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-repo" href="/docs/concepts/system/repo/">Repo</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-secret" href="/docs/concepts/system/secret/">Secret</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-service" href="/docs/concepts/system/service/">Service</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-step" href="/docs/concepts/system/step/">Step</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-system-user" href="/docs/concepts/system/user/">User</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-concepts-template" href="/docs/concepts/template/">Template</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+<a href="https://github.com/go-vela/docs/edit/master/content/concepts/pipeline/services/ports.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/go-vela/docs/issues/new?title=Ports" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+</div>
+
+
+
+
+
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/concepts/">Concepts</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/concepts/pipeline/">Pipeline</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/concepts/pipeline/services/">Services</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://go-vela.github.io/docs/concepts/pipeline/services/ports/">Ports</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Ports</h1>
+	<div class="lead">This section contains information on the ports component for a service.</div>
+	
+
+<p>The <code>ports</code> component is a part of a <a href="/docs/concepts/pipeline/services/">service</a> for Vela.</p>
+
+<p>This declaration allows you to provide a list of ports to map for the container in the pipeline.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>The following is an example of valid syntax for the component:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">version: &#34;1&#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+<span style="color:#00a000">+    ports:
+</span><span style="color:#00a000">+      - &#34;5432:5432&#34;
+</span><span style="color:#00a000"></span>
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&#39;
+    commands:
+      - go test ./...
+</code></pre></div>
+
+
+<div class="alert alert-info" role="alert">
+
+This pipeline will start the <code>postgres</code> service first, then run the <code>test</code> step.
+</div>
+
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/go-vela/docs/commit/cc14823d88c5e1a3ec3c7ca859b4f5a26de29587">docs: fix links (part 2) (#114) (cc14823)</a>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/go-vela">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://gophers.slack.com/app_redirect?channel=CNRRKE8KY">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+    <a class="text-white" target="_blank" href="mailto:vela@target.com">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2020 Target Brands All Rights Reserved</small>
+        <small class="ml-1"><a href="https://github.com/go-vela/server/blob/master/LICENSE" target="_blank">Privacy Policy</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<script src="/docs/js/main.min.249bfd804cb79020e7c423ccdbcde3013d7a34a1365fe174e162d05ba8fbbfdf.js" integrity="sha256-JJv9gEy3kCDnxCPM283jAT16NKE2X&#43;F04WLQW6j7v98=" crossorigin="anonymous"></script>
+
+
+
+  </body>
+</html>

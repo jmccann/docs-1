@@ -1,0 +1,601 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Services</title>
+    <link>https://go-vela.github.io/docs/concepts/pipeline/services/</link>
+    <description>Recent content in Services on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/pipeline/services/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Entrypoint</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/entrypoint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/entrypoint/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;entrypoint&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the command to execute inside the container.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    entrypoint: &amp;#34;/docker-entrypoint.sh&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Environment</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/environment/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;environment&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide variables injected into the container environment.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    environment:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      POSTGRES_DB: example
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      POSTGRES_USER: example
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://example@postgres:5432/example?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;defaults&#34;&gt;Defaults&lt;/h2&gt;
+
+&lt;p&gt;The following environment variables are injected into every service:&lt;/p&gt;
+
+&lt;h4 id=&#34;build-environment-variables&#34;&gt;Build Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_AUTHOR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_AUTHOR_EMAIL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat@github.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author email from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_BRANCH&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_CHANNEL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_COMMIT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;7fd1a60b01f91b314f59955a4e4d4e80d8edf11d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;commit sha from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_CREATED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556720958&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build creation time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_ENQUEUED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build enqueue time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_EVENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;push&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;webhook event that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_FINISHED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730045&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build completion time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_HOST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-worker-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the worker the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_LINK&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://vela-server.localhost/octocat/hello-world/1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;link to the build in the UI&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_MESSAGE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Merge pull request #6 from octocat/patch-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;message from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;build number&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_PARENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;previous build number&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_REF&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;refs/heads/master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;reference from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_STARTED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build start time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_SOURCE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world/commit/7fd1a60b01f91b314f59955a4e4d4e80d8edf11d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;link from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_TITLE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;push received from https://github.com/octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;title from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_WORKSPACE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/vela/src/github.com/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;working directory the build is executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_TAG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;v1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tag is populated from the source reference&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_PULL_REQUEST_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;pull request number is populated from the source reference&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BUILD_LINK&lt;/code&gt; is not populated if the Vela server is configured to run headless (no UI).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BUILD_TAG&lt;/code&gt; is only populated during &lt;code&gt;tag&lt;/code&gt; events.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BUILD_PULL_REQUEST_NUMBER&lt;/code&gt; is only populated during &lt;code&gt;pull_request&lt;/code&gt; events.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;vela-environment-variables&#34;&gt;Vela Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;environment is Vela&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_ADDR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-server.localhost&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the Vela server&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_CHANNEL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_DATABASE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;postgres&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;database Vela is connected to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_HOST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-worker-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the worker the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_QUEUE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;redis&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_RUNTIME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;docker&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime environment build was executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_SOURCE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;github&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_VERSION&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;v0.1.0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Vela version&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_WORKSPACE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/vela/src/github.com/github/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;working directory the build is executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CI&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;CI enabled is Vela&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;repository-environment-variables&#34;&gt;Repository Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_BRANCH&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;default branch of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_CLONE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world.git&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;clone url of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_FULL_NAME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full name of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_LINK&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;direct url of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_NAME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_PRIVATE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;privacy setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_TIMEOUT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;60&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;timeout setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_TRUSTED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;trusted setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Image</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/image/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/image/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;image&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the &lt;a href=&#34;https://docs.docker.com/engine/docker-overview/#images&#34; target=&#34;_blank&#34;&gt;Docker image&lt;/a&gt; used to create the ephemeral container.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All Vela services will require an &lt;code&gt;image&lt;/code&gt; declaration to be provided.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Any valid &lt;a href=&#34;https://docs.docker.com/engine/docker-overview/#images&#34; target=&#34;_blank&#34;&gt;Docker image&lt;/a&gt; in any publicly accessible &lt;a href=&#34;https://docs.docker.com/registry/&#34; target=&#34;_blank&#34;&gt;Docker registry&lt;/a&gt; can be used for the container.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;latest&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;library/golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;index.docker.io/library/golang&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;index.docker.io/library/golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All the above images would pull an image from the &lt;a href=&#34;https://hub.docker.com/_/golang&#34; target=&#34;_blank&#34;&gt;golang Docker repository&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+&lt;span style=&#34;color:#00a000&#34;&gt;+    image: postgres:12
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    pull: true
+
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Ports</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/ports/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/ports/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;ports&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide a list of ports to map for the container in the pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    ports:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - &amp;#34;5432:5432&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Pull</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/pull/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/pull/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;pull&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to automatically upgrade to the latest version of the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/image/&#34;&gt;image&lt;/a&gt;.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;Vela will always attempt to pull from its existing cache for images.&lt;/p&gt;
+
+&lt;p&gt;We recommend using the &lt;code&gt;pull&lt;/code&gt; declaration whenever possible.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    pull: true
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

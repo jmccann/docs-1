@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/docs/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/docs/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/docs/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/docs/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/docs/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/docs/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/docs/favicons/android-96x196.png" sizes="96x196">
+<link rel="icon" type="image/png" href="/docs/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png"sizes="192x192">
+
+<title>Add | Vela</title><meta property="og:title" content="Add" />
+<meta property="og:description" content="Learn how to create a step.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://go-vela.github.io/docs/sdk/go/step/add/" />
+<meta property="article:modified_time" content="2020-05-21T16:27:50+00:00" />
+<meta itemprop="name" content="Add">
+<meta itemprop="description" content="Learn how to create a step.
+">
+
+
+<meta itemprop="dateModified" content="2020-05-21T16:27:50&#43;00:00" />
+<meta itemprop="wordCount" content="105">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Add"/>
+<meta name="twitter:description" content="Learn how to create a step.
+"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/docs/scss/main.min.70d8bad3cbfd44b25762dfb0cadb082e7e2c882cbc3cb7ff0b318df81507856d.css" as="style">
+<link href="/docs/scss/main.min.70d8bad3cbfd44b25762dfb0cadb082e7e2c882cbc3cb7ff0b318df81507856d.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+    <title>Add | Vela</title>
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/docs/">
+		<span class="navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1500"><title>vela-inverse</title><polygon points="1477.22 329.54 1338.11 219.91 1349.56 43.16 1202.3 141.58 1037.73 76.07 1085.84 246.54 972.68 382.81 1149.67 389.74 1244.3 539.46 1305.58 373.27 1477.22 329.54" style="fill:#9e6bae"/><path d="M1174.75 635.12 757.57 1357.69a3.47 3.47.0 0 1-6 0L125.38 273.13a3.48 3.48.0 0 1 3-5.22H925.24l39.14-47.13L950.19 170.5H128.39A100.9 100.9.0 0 0 41 321.84L667.19 1406.4a100.88 100.88.0 0 0 174.74.0l391.61-678.27z" style="fill:#34c6f4"/><polygon points="1087.64 497.29 1038.27 495.36 754.56 986.75 395.9 365.54 288.13 365.54 754.56 1173.42 1117.58 544.66 1087.64 497.29" style="fill:#fff"/></svg></span><span class="text-uppercase font-weight-bold">Vela</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/concepts/" ><span>Concepts</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/install/" ><span>Install</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/usage/" ><span>Usage</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/plugins/" ><span>Plugins</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/templates/" ><span>Templates</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/api/" ><span>API</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/cli/" ><span>CLI</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/docs/sdk/" ><span class="active">SDK</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><div>
+    
+
+    <div class="search -navbar" id="search1">
+        <input id="search1input" type="text" placeholder="Search site..." v-model="txt" @blur="close()" maxlength="50">
+        <div class="search-results" :style="{'display': showresult?'block':'none'}">
+            <a v-for="item in result" :href="item.url">{{ item.display }}</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+    <script>
+        let mounted = function() {
+            
+            document.getElementById("search1input").addEventListener("keyup", e => {
+                this.txt = e.target.value;
+                this.search();
+            });
+            
+            axios.get('https:\/\/go-vela.github.io\/docs\/search\/index.json')
+                .then(function(response) {
+                    vuesearch1.bdd = response.data.results;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+        let close = function() {
+            
+            
+            setTimeout(function() {
+                vuesearch1.showresult = false;
+                vuesearch1.txt = '';
+            }, 300);
+        }
+        let search = function() {
+            
+            clearTimeout(this.timeoutID);
+            this.timeoutID = setTimeout(this.dosearch, 500);
+        }
+
+        let dosearch = function() {
+            
+            this.result = []; 
+            let words = this.txt.split(' '); 
+            let words2 = []; 
+            words.forEach(function(element) { 
+                if (element) {
+                    words2.push(element);
+                }
+            });
+            let r;
+            let resultmp;
+            words2.forEach(function(e) {
+                r = vuesearch1.bdd.filter(p => p.content.indexOf(e.toLowerCase()) !== -1);
+                if (vuesearch1.result.length === 0) {
+                    vuesearch1.result = r.slice();
+                    return;
+                }
+                resultmp = [];
+                vuesearch1.result.forEach(function(all1) {
+                    r.forEach(function(all2) {
+                        if (all1.url === all2.url) {
+                            resultmp.push(all1);
+                        }
+                    });
+                });
+                vuesearch1.result = resultmp.slice();
+            });
+            this.result = this.result.slice(0, 10); 
+            this.result = this.result.sort(function (a, b) {
+                return ('' + a.display).localeCompare(b.display);
+            })
+            this.showresult = (this.result.length > 0);
+        }
+        let vuesearch1 = new Vue({
+            el: '#search1',
+            data: {
+                txt: '',
+                timeoutID: 0,
+                showresult: false,
+                result: {},
+                bdd: []
+            },
+            mounted: mounted,
+            methods: {
+                close: close,
+                search: search,
+                dosearch: dosearch
+            }
+        });
+    </script>
+</div></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div>
+    <div class="search -sidebar" id="search2">
+        <input id="search2input" type="text" placeholder="Search site..." v-model="txt" @blur="close()" maxlength="50">
+        <div class="search-results" :style="{'display': showresult?'block':'none'}">
+            <a v-for="item in result" :href="item.url">{{ item.display }}</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script>
+    let mounted_sidebar = function() {
+        document.getElementById("search2input").addEventListener("keyup", e => {
+            this.txt = e.target.value;
+            this.search();
+        });
+        axios.get('https:\/\/go-vela.github.io\/docs\/search\/index.json')
+            .then(function(response) {
+                vuesearch2.bdd = response.data.results;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+    let close_sidebar = function() {
+        setTimeout(function() {
+            vuesearch2.showresult = false;
+            vuesearch2.txt = '';
+        }, 300);
+    }
+
+    let dosearch_sidebar = function() {
+        this.result = [];
+        var words = this.txt.split(' ');
+        var words2 = [];
+        words.forEach(function(element) {
+            if (element) {
+                words2.push(element);
+            }
+        });
+        var r;
+        var resultmp;
+        words2.forEach(function(e) {
+            r = vuesearch2.bdd.filter(p => p.content.indexOf(e.toLowerCase()) !== -1);
+            if (vuesearch2.result.length === 0) {
+                vuesearch2.result = r.slice();
+                return;
+            }
+            resultmp = [];
+            vuesearch2.result.forEach(function(all1) {
+                r.forEach(function(all2) {
+                    if (all1.url === all2.url) {
+                        resultmp.push(all1);
+                    }
+                });
+            });
+            vuesearch2.result = resultmp.slice();
+        });
+        this.result = this.result.slice(0, 10);
+        this.result = this.result.sort(function (a, b) {
+            return ('' + a.display).localeCompare(b.display);
+        })
+        this.showresult = (this.result.length > 0);
+    }
+    let vuesearch2 = new Vue({
+        el: '#search2',
+        data: {
+            txt: '',
+            timeoutID: 0,
+            showresult: false,
+            result: {},
+            bdd: []
+        },
+        mounted: mounted_sidebar,
+        methods: {
+            close: close_sidebar,
+            search: search,
+            dosearch: dosearch_sidebar
+        }
+    });
+</script>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/sdk/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">SDK</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-sdk">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/sdk/go/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Go</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-sdk-go">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-install" href="/docs/sdk/go/install/">Install</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-authentication" href="/docs/sdk/go/authentication/">Authentication</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/sdk/go/build/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Build</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-sdk-go-build">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-build-add" href="/docs/sdk/go/build/add/">Add</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-build-get" href="/docs/sdk/go/build/get/">Get</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-build-logs" href="/docs/sdk/go/build/logs/">Logs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-build-remove" href="/docs/sdk/go/build/remove/">Remove</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-build-restart" href="/docs/sdk/go/build/restart/">Restart</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-build-update" href="/docs/sdk/go/build/update/">Update</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-build-view" href="/docs/sdk/go/build/view/">View</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/sdk/go/repo/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Repo</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-sdk-go-repo">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-repo-add" href="/docs/sdk/go/repo/add/">Add</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-repo-chown" href="/docs/sdk/go/repo/chown/">Chown</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-repo-get" href="/docs/sdk/go/repo/get/">Get</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-repo-remove" href="/docs/sdk/go/repo/remove/">Remove</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-repo-repair" href="/docs/sdk/go/repo/repair/">Repair</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-repo-update" href="/docs/sdk/go/repo/update/">Update</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-repo-view" href="/docs/sdk/go/repo/view/">View</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/sdk/go/secret/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Secret</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-sdk-go-secret">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-secret-add" href="/docs/sdk/go/secret/add/">Add</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-secret-get" href="/docs/sdk/go/secret/get/">Get</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-secret-remove" href="/docs/sdk/go/secret/remove/">Remove</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-secret-update" href="/docs/sdk/go/secret/update/">Update</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-secret-view" href="/docs/sdk/go/secret/view/">View</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/sdk/go/service/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Service</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-sdk-go-service">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-service-add" href="/docs/sdk/go/service/add/">Add</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-service-get" href="/docs/sdk/go/service/get/">Get</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-service-logs" href="/docs/sdk/go/service/logs/">Logs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-service-remove" href="/docs/sdk/go/service/remove/">Remove</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-service-update" href="/docs/sdk/go/service/update/">Update</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-service-view" href="/docs/sdk/go/service/view/">View</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/sdk/go/step/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Step</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-sdk-go-step">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-sdk-go-step-add" href="/docs/sdk/go/step/add/">Add</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-step-get" href="/docs/sdk/go/step/get/">Get</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-step-logs" href="/docs/sdk/go/step/logs/">Logs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-step-remove" href="/docs/sdk/go/step/remove/">Remove</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-step-update" href="/docs/sdk/go/step/update/">Update</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-sdk-go-step-view" href="/docs/sdk/go/step/view/">View</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+<a href="https://github.com/go-vela/docs/edit/master/content/sdk/go/step/add.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/go-vela/docs/issues/new?title=Add" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+</div>
+
+
+
+
+
+
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#function">Function</a></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#permissions">Permissions</a></li>
+<li><a href="#responses">Responses</a></li>
+<li><a href="#sample">Sample</a></li>
+</ul></li>
+</ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/sdk/">SDK</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/sdk/go/">Go</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/sdk/go/step/">Step</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://go-vela.github.io/docs/sdk/go/step/add/">Add</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Add</h1>
+	<div class="lead">Learn how to create a step.</div>
+	
+
+<h2 id="function">Function</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#204a87;font-weight:bold">func</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">svc</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">StepService</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000">Add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">org</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">repo</span> <span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">build</span> <span style="color:#204a87;font-weight:bold">int</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Step</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">library</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Step</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">Response</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">error</span><span style="color:#000;font-weight:bold">)</span></code></pre></div>
+
+
+<div class="alert alert-info" role="alert">
+
+For more information, you can view our <a href="https://godoc.org/github.com/go-vela/sdk-go/vela#StepService.Add" target="_blank">go documentation</a>.
+</div>
+
+
+<h2 id="parameters">Parameters</h2>
+
+<p>The following parameters are used to configure the function:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>org</code></td>
+<td>name of organization</td>
+</tr>
+
+<tr>
+<td><code>repo</code></td>
+<td>name of repository</td>
+</tr>
+
+<tr>
+<td><code>build</code></td>
+<td>number of build</td>
+</tr>
+
+<tr>
+<td><code>s</code></td>
+<td>information on step</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="permissions">Permissions</h2>
+
+<p>COMING SOON!</p>
+
+<h2 id="responses">Responses</h2>
+
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td>indicates the request has succeeded</td>
+</tr>
+
+<tr>
+<td><code>401</code></td>
+<td>indicates the user does not have proper permissions</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="sample">Sample</h2>
+
+
+
+<div class="alert alert-warning" role="alert">
+
+<p>This section assumes you already know how to authenticate with the SDK.</p>
+
+<p>To authenticate with the SDK, please review the <a href="/docs/sdk/go/authentication/">authentication documentation</a>.</p>
+
+</div>
+
+
+<p>You can find an example of this function <a href="https://godoc.org/github.com/go-vela/sdk-go/vela#example-StepService-Add" target="_blank">here</a>.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified May 21, 2020: <a  href="https://github.com/go-vela/docs/commit/e5d3b8ca6944713804b5c33164849c050bc16e49">docs(links): fix various links (#137) (e5d3b8c)</a>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/go-vela">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://gophers.slack.com/app_redirect?channel=CNRRKE8KY">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+    <a class="text-white" target="_blank" href="mailto:vela@target.com">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2020 Target Brands All Rights Reserved</small>
+        <small class="ml-1"><a href="https://github.com/go-vela/server/blob/master/LICENSE" target="_blank">Privacy Policy</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<script src="/docs/js/main.min.249bfd804cb79020e7c423ccdbcde3013d7a34a1365fe174e162d05ba8fbbfdf.js" integrity="sha256-JJv9gEy3kCDnxCPM283jAT16NKE2X&#43;F04WLQW6j7v98=" crossorigin="anonymous"></script>
+
+
+
+  </body>
+</html>

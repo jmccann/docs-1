@@ -1,0 +1,266 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Step</title>
+    <link>https://go-vela.github.io/docs/cli/step/</link>
+    <description>Recent content in Step on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/cli/step/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Cli: Get</title>
+      <link>https://go-vela.github.io/docs/cli/step/get/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/cli/step/get/</guid>
+      <description>
+        
+        
+        
+
+&lt;h2 id=&#34;command&#34;&gt;Command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vela get step &amp;lt;parameters...&amp;gt; &amp;lt;arguments...&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+For more information, you can run &lt;code&gt;vela get step --help&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;parameters&#34;&gt;Parameters&lt;/h2&gt;
+
+&lt;p&gt;The following parameters are used to configure the command:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Environment Variables&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of organization for the steps&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_ORG&lt;/code&gt;, &lt;code&gt;STEP_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of repository for the steps&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_REPO&lt;/code&gt;, &lt;code&gt;STEP_REPO&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;number of build for the steps&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_BUILD&lt;/code&gt;, &lt;code&gt;STEP_BUILD&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;output&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;format the output for the steps&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_OUTPUT&lt;/code&gt;, &lt;code&gt;STEP_OUTPUT&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;page&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;prints a specific page of steps&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_PAGE&lt;/code&gt;, &lt;code&gt;STEP_PAGE&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;per.page&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;number of steps to print per page&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_PER_PAGE&lt;/code&gt;, &lt;code&gt;STEP_PER_PAGE&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This command also supports setting the following parameters via a configuration file:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;output&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/config/&#34;&gt;CLI config documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;permissions&#34;&gt;Permissions&lt;/h2&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This section assumes you have already installed and setup the CLI.&lt;/p&gt;
+
+&lt;p&gt;To install the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/install/&#34;&gt;installation documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To setup the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/authentication/&#34;&gt;authentication documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;request&#34;&gt;Request&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vela get step --org github --repo octocat --build &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;response&#34;&gt;Response&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;NAME            STATUS  RUNTIME DURATION
+publish         failure         1s
+build           success         17s
+&lt;span style=&#34;color:#204a87&#34;&gt;test&lt;/span&gt;            success         10s
+clone           success         2s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cli: View</title>
+      <link>https://go-vela.github.io/docs/cli/step/view/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/cli/step/view/</guid>
+      <description>
+        
+        
+        
+
+&lt;h2 id=&#34;command&#34;&gt;Command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vela view step &amp;lt;parameters...&amp;gt; &amp;lt;arguments...&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+For more information, you can run &lt;code&gt;vela view step --help&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;parameters&#34;&gt;Parameters&lt;/h2&gt;
+
+&lt;p&gt;The following parameters are used to configure the command:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Environment Variables&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of organization for the step&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_ORG&lt;/code&gt;, &lt;code&gt;STEP_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of repository for the step&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_REPO&lt;/code&gt;, &lt;code&gt;STEP_REPO&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;number of build for the step&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_BUILD&lt;/code&gt;, &lt;code&gt;STEP_BUILD&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;step&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;number of the step&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_STEP&lt;/code&gt;, &lt;code&gt;STEP_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;output&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;format the output for the step&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_OUTPUT&lt;/code&gt;, &lt;code&gt;STEP_OUTPUT&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This command also supports setting the following parameters via a configuration file:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;output&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/config/&#34;&gt;CLI config documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;permissions&#34;&gt;Permissions&lt;/h2&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This section assumes you have already installed and setup the CLI.&lt;/p&gt;
+
+&lt;p&gt;To install the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/install/&#34;&gt;installation documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To setup the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/authentication/&#34;&gt;authentication documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;request&#34;&gt;Request&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vela view step --org github --repo octocat --build &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; --step &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;response&#34;&gt;Response&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;id: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+build_id: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+repo_id: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+number: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+name: clone
+status: success
+error: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;           &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Populates when the platform runs into an error with the build&lt;/span&gt;
+exitcode: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
+created: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1561748980&lt;/span&gt;
+started: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1561748979&lt;/span&gt;
+finished: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1561748981&lt;/span&gt;
+host: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;worker.host.com&amp;#34;&lt;/span&gt;
+runtime: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;docker&amp;#34;&lt;/span&gt;
+distribution: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;linux&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

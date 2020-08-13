@@ -1,0 +1,145 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Template</title>
+    <link>https://go-vela.github.io/docs/concepts/pipeline/templates/</link>
+    <description>Recent content in Template on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/pipeline/templates/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Source</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/templates/source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/templates/source/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;source&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/templates/&#34;&gt;template&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the path to the template in the remote system.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+templates
+  - name: template
+&lt;span style=&#34;color:#00a000&#34;&gt;+    source: github.com/vela/atlas/cmd
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    type: github
+
+steps:
+  - name: test
+    template:
+      name: template
+      vars:
+        cmd: go test ./...
+
+  - name: build
+    template:
+      name: template
+      vars:
+        cmd: go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Type</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/templates/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/templates/type/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;type&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/templates/&#34;&gt;template&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the type of template provided from the remote system.&lt;/p&gt;
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;p&gt;The following options are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;github&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fetches the template from a GitHub or GitHub Enterprise instance&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;github&#34;&gt;GitHub&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;github&lt;/code&gt; template type is designed to fetch templates from &lt;a href=&#34;https://github.com&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt; or &lt;a href=&#34;https://github.com/enterprise&#34; target=&#34;_blank&#34;&gt;GitHub Enterprise&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+templates
+  - name: template
+    source: github.com/vela/atlas/cmd
+&lt;span style=&#34;color:#00a000&#34;&gt;+    type: github
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    template:
+      name: template
+      vars:
+        cmd: go test ./...
+
+  - name: build
+    template:
+      name: template
+      vars:
+        cmd: go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

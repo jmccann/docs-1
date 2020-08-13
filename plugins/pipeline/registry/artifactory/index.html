@@ -1,0 +1,1310 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/docs/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/docs/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/docs/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/docs/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/docs/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/docs/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/docs/favicons/android-96x196.png" sizes="96x196">
+<link rel="icon" type="image/png" href="/docs/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/docs/favicons/android-192x192.png"sizes="192x192">
+
+<title>Artifactory | Vela</title><meta property="og:title" content="Artifactory" />
+<meta property="og:description" content="Overview This plugin enables the ability to manage artifacts in Artifactory in a Vela pipeline.
+Source Code: https://github.com/go-vela/vela-artifactory
+Registry: https://hub.docker.com/r/target/vela-artifactory
+This plugin supports environment (PARAMETER_*) and volume (/vela/parameters/*) configuration for setting parameters.
+The precedence order is take files then environment variables if both are set in a container.
+ Usage Sample of copying an artifact:
+steps:-name:copy_artifactsimage:target/vela-artifactory:v0.2.0pull:trueparameters:action:copypath:libs-snapshot-local/foo.txttarget:libs-snapshot-local/bar.txturl:http://localhost:8081/artifactory Sample of deleting an artifact:
+steps:-name:delete_artifactsimage:target/vela-artifactory:v0.2.0pull:trueparameters:action:deletepath:libs-snapshot-local/foo.txturl:http://localhost:8081/artifactory Sample of setting properties on an artifact:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://go-vela.github.io/docs/plugins/pipeline/registry/artifactory/" />
+<meta property="article:modified_time" content="2020-08-12T12:32:50-05:00" />
+<meta itemprop="name" content="Artifactory">
+<meta itemprop="description" content="Overview This plugin enables the ability to manage artifacts in Artifactory in a Vela pipeline.
+Source Code: https://github.com/go-vela/vela-artifactory
+Registry: https://hub.docker.com/r/target/vela-artifactory
+This plugin supports environment (PARAMETER_*) and volume (/vela/parameters/*) configuration for setting parameters.
+The precedence order is take files then environment variables if both are set in a container.
+ Usage Sample of copying an artifact:
+steps:-name:copy_artifactsimage:target/vela-artifactory:v0.2.0pull:trueparameters:action:copypath:libs-snapshot-local/foo.txttarget:libs-snapshot-local/bar.txturl:http://localhost:8081/artifactory Sample of deleting an artifact:
+steps:-name:delete_artifactsimage:target/vela-artifactory:v0.2.0pull:trueparameters:action:deletepath:libs-snapshot-local/foo.txturl:http://localhost:8081/artifactory Sample of setting properties on an artifact:">
+
+
+<meta itemprop="dateModified" content="2020-08-12T12:32:50-05:00" />
+<meta itemprop="wordCount" content="642">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Artifactory"/>
+<meta name="twitter:description" content="Overview This plugin enables the ability to manage artifacts in Artifactory in a Vela pipeline.
+Source Code: https://github.com/go-vela/vela-artifactory
+Registry: https://hub.docker.com/r/target/vela-artifactory
+This plugin supports environment (PARAMETER_*) and volume (/vela/parameters/*) configuration for setting parameters.
+The precedence order is take files then environment variables if both are set in a container.
+ Usage Sample of copying an artifact:
+steps:-name:copy_artifactsimage:target/vela-artifactory:v0.2.0pull:trueparameters:action:copypath:libs-snapshot-local/foo.txttarget:libs-snapshot-local/bar.txturl:http://localhost:8081/artifactory Sample of deleting an artifact:
+steps:-name:delete_artifactsimage:target/vela-artifactory:v0.2.0pull:trueparameters:action:deletepath:libs-snapshot-local/foo.txturl:http://localhost:8081/artifactory Sample of setting properties on an artifact:"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/docs/scss/main.min.70d8bad3cbfd44b25762dfb0cadb082e7e2c882cbc3cb7ff0b318df81507856d.css" as="style">
+<link href="/docs/scss/main.min.70d8bad3cbfd44b25762dfb0cadb082e7e2c882cbc3cb7ff0b318df81507856d.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+    <title>Artifactory | Vela</title>
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/docs/">
+		<span class="navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1500"><title>vela-inverse</title><polygon points="1477.22 329.54 1338.11 219.91 1349.56 43.16 1202.3 141.58 1037.73 76.07 1085.84 246.54 972.68 382.81 1149.67 389.74 1244.3 539.46 1305.58 373.27 1477.22 329.54" style="fill:#9e6bae"/><path d="M1174.75 635.12 757.57 1357.69a3.47 3.47.0 0 1-6 0L125.38 273.13a3.48 3.48.0 0 1 3-5.22H925.24l39.14-47.13L950.19 170.5H128.39A100.9 100.9.0 0 0 41 321.84L667.19 1406.4a100.88 100.88.0 0 0 174.74.0l391.61-678.27z" style="fill:#34c6f4"/><polygon points="1087.64 497.29 1038.27 495.36 754.56 986.75 395.9 365.54 288.13 365.54 754.56 1173.42 1117.58 544.66 1087.64 497.29" style="fill:#fff"/></svg></span><span class="text-uppercase font-weight-bold">Vela</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/concepts/" ><span>Concepts</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/install/" ><span>Install</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/usage/" ><span>Usage</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/docs/plugins/" ><span class="active">Plugins</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/templates/" ><span>Templates</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/api/" ><span>API</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/cli/" ><span>CLI</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/docs/sdk/" ><span>SDK</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><div>
+    
+
+    <div class="search -navbar" id="search1">
+        <input id="search1input" type="text" placeholder="Search site..." v-model="txt" @blur="close()" maxlength="50">
+        <div class="search-results" :style="{'display': showresult?'block':'none'}">
+            <a v-for="item in result" :href="item.url">{{ item.display }}</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+    <script>
+        let mounted = function() {
+            
+            document.getElementById("search1input").addEventListener("keyup", e => {
+                this.txt = e.target.value;
+                this.search();
+            });
+            
+            axios.get('https:\/\/go-vela.github.io\/docs\/search\/index.json')
+                .then(function(response) {
+                    vuesearch1.bdd = response.data.results;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+        let close = function() {
+            
+            
+            setTimeout(function() {
+                vuesearch1.showresult = false;
+                vuesearch1.txt = '';
+            }, 300);
+        }
+        let search = function() {
+            
+            clearTimeout(this.timeoutID);
+            this.timeoutID = setTimeout(this.dosearch, 500);
+        }
+
+        let dosearch = function() {
+            
+            this.result = []; 
+            let words = this.txt.split(' '); 
+            let words2 = []; 
+            words.forEach(function(element) { 
+                if (element) {
+                    words2.push(element);
+                }
+            });
+            let r;
+            let resultmp;
+            words2.forEach(function(e) {
+                r = vuesearch1.bdd.filter(p => p.content.indexOf(e.toLowerCase()) !== -1);
+                if (vuesearch1.result.length === 0) {
+                    vuesearch1.result = r.slice();
+                    return;
+                }
+                resultmp = [];
+                vuesearch1.result.forEach(function(all1) {
+                    r.forEach(function(all2) {
+                        if (all1.url === all2.url) {
+                            resultmp.push(all1);
+                        }
+                    });
+                });
+                vuesearch1.result = resultmp.slice();
+            });
+            this.result = this.result.slice(0, 10); 
+            this.result = this.result.sort(function (a, b) {
+                return ('' + a.display).localeCompare(b.display);
+            })
+            this.showresult = (this.result.length > 0);
+        }
+        let vuesearch1 = new Vue({
+            el: '#search1',
+            data: {
+                txt: '',
+                timeoutID: 0,
+                showresult: false,
+                result: {},
+                bdd: []
+            },
+            mounted: mounted,
+            methods: {
+                close: close,
+                search: search,
+                dosearch: dosearch
+            }
+        });
+    </script>
+</div></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div>
+    <div class="search -sidebar" id="search2">
+        <input id="search2input" type="text" placeholder="Search site..." v-model="txt" @blur="close()" maxlength="50">
+        <div class="search-results" :style="{'display': showresult?'block':'none'}">
+            <a v-for="item in result" :href="item.url">{{ item.display }}</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js" integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script>
+    let mounted_sidebar = function() {
+        document.getElementById("search2input").addEventListener("keyup", e => {
+            this.txt = e.target.value;
+            this.search();
+        });
+        axios.get('https:\/\/go-vela.github.io\/docs\/search\/index.json')
+            .then(function(response) {
+                vuesearch2.bdd = response.data.results;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+    let close_sidebar = function() {
+        setTimeout(function() {
+            vuesearch2.showresult = false;
+            vuesearch2.txt = '';
+        }, 300);
+    }
+
+    let dosearch_sidebar = function() {
+        this.result = [];
+        var words = this.txt.split(' ');
+        var words2 = [];
+        words.forEach(function(element) {
+            if (element) {
+                words2.push(element);
+            }
+        });
+        var r;
+        var resultmp;
+        words2.forEach(function(e) {
+            r = vuesearch2.bdd.filter(p => p.content.indexOf(e.toLowerCase()) !== -1);
+            if (vuesearch2.result.length === 0) {
+                vuesearch2.result = r.slice();
+                return;
+            }
+            resultmp = [];
+            vuesearch2.result.forEach(function(all1) {
+                r.forEach(function(all2) {
+                    if (all1.url === all2.url) {
+                        resultmp.push(all1);
+                    }
+                });
+            });
+            vuesearch2.result = resultmp.slice();
+        });
+        this.result = this.result.slice(0, 10);
+        this.result = this.result.sort(function (a, b) {
+            return ('' + a.display).localeCompare(b.display);
+        })
+        this.showresult = (this.result.length > 0);
+    }
+    let vuesearch2 = new Vue({
+        el: '#search2',
+        data: {
+            txt: '',
+            timeoutID: 0,
+            showresult: false,
+            result: {},
+            bdd: []
+        },
+        mounted: mounted_sidebar,
+        methods: {
+            close: close_sidebar,
+            search: search,
+            dosearch: dosearch_sidebar
+        }
+    });
+</script>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/plugins/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Plugins</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-plugins">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-overview" href="/docs/plugins/overview/">Overview</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/plugins/pipeline/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Pipeline</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-plugins-pipeline">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/plugins/pipeline/registry/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Registry</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs-plugins-pipeline-registry">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-registry-terraform" href="/docs/plugins/pipeline/registry/terraform/"></a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docs-plugins-pipeline-registry-artifactory" href="/docs/plugins/pipeline/registry/artifactory/">Artifactory</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-registry-captains-log" href="/docs/plugins/pipeline/registry/captains_log/">Captain&#39;s Log</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-registry-docker" href="/docs/plugins/pipeline/registry/docker/">Docker</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-registry-downstream" href="/docs/plugins/pipeline/registry/downstream/">Downstream</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-registry-git" href="/docs/plugins/pipeline/registry/git/">Git</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-registry-kubernetes" href="/docs/plugins/pipeline/registry/kubernetes/">Kubernetes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-registry-s3-cache" href="/docs/plugins/pipeline/registry/s3_cache/">S3 Cache</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/plugins/pipeline/tutorials/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tutorials</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-plugins-pipeline-tutorials">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-tutorials-bash" href="/docs/plugins/pipeline/tutorials/bash/">Bash</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-tutorials-go" href="/docs/plugins/pipeline/tutorials/go/">Go</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-tutorials-node" href="/docs/plugins/pipeline/tutorials/node/">Node.js</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-tutorials-python" href="/docs/plugins/pipeline/tutorials/python/">Python</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-pipeline-tutorials-ruby" href="/docs/plugins/pipeline/tutorials/ruby/">Ruby</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/plugins/secret/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Secret</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-plugins-secret">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/plugins/secret/registry/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Registry</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-plugins-secret-registry">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docs-plugins-secret-registry-vault" href="/docs/plugins/secret/registry/vault/">Vault</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/plugins/secret/tutorials/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tutorials</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docs-plugins-secret-tutorials">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+<a href="https://github.com/go-vela/docs/edit/master/content/plugins/pipeline/registry/artifactory.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/go-vela/docs/issues/new?title=Artifactory" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+</div>
+
+
+
+
+
+
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#secrets">Secrets</a>
+<ul>
+<li><a href="#internal">Internal</a></li>
+<li><a href="#external">External</a></li>
+</ul></li>
+<li><a href="#parameters">Parameters</a>
+<ul>
+<li>
+<ul>
+<li><a href="#copy">Copy</a></li>
+<li><a href="#delete">Delete</a></li>
+</ul></li>
+<li><a href="#docker-promote">Docker-Promote</a>
+<ul>
+<li><a href="#set-prop">Set-Prop</a></li>
+<li><a href="#upload">Upload</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#template">Template</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul></li>
+</ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/plugins/">Plugins</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/plugins/pipeline/">Pipeline</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://go-vela.github.io/docs/plugins/pipeline/registry/">Registry</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://go-vela.github.io/docs/plugins/pipeline/registry/artifactory/">Artifactory</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Artifactory</h1>
+	
+	
+
+<h2 id="overview">Overview</h2>
+
+<p>This plugin enables the ability to manage artifacts in <a href="https://jfrog.com/artifactory/" target="_blank">Artifactory</a> in a Vela pipeline.</p>
+
+<p>Source Code: <a href="https://github.com/go-vela/vela-artifactory" target="_blank">https://github.com/go-vela/vela-artifactory</a></p>
+
+<p>Registry: <a href="https://hub.docker.com/r/target/vela-artifactory" target="_blank">https://hub.docker.com/r/target/vela-artifactory</a></p>
+
+
+
+<div class="alert alert-tip" role="alert">
+
+<p>This plugin supports environment (<code>PARAMETER_*</code>) and volume (<code>/vela/parameters/*</code>) configuration for setting parameters.</p>
+
+<p>The precedence order is take files then environment variables if both are set in a container.</p>
+
+</div>
+
+
+<h2 id="usage">Usage</h2>
+
+<p>Sample of copying an artifact:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>copy_artifacts<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>target/vela-artifactory<span style="color:#000;font-weight:bold">:</span>v0<span style="color:#0000cf;font-weight:bold">.2.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>pull<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>parameters<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>action<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>copy<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>path<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>libs-snapshot-local/foo.txt<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>target<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>libs-snapshot-local/bar.txt<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>url<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>http<span style="color:#000;font-weight:bold">:</span>//localhost<span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8081</span>/artifactory</code></pre></div>
+<p>Sample of deleting an artifact:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>delete_artifacts<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>target/vela-artifactory<span style="color:#000;font-weight:bold">:</span>v0<span style="color:#0000cf;font-weight:bold">.2.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>pull<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>parameters<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>action<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>delete<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>path<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>libs-snapshot-local/foo.txt<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>url<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>http<span style="color:#000;font-weight:bold">:</span>//localhost<span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8081</span>/artifactory</code></pre></div>
+<p>Sample of setting properties on an artifact:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>set_properties_artifacts<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>target/vela-artifactory<span style="color:#000;font-weight:bold">:</span>v0<span style="color:#0000cf;font-weight:bold">.2.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>pull<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>parameters<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>action<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>set-prop<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>path<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>libs-snapshot-local/foo.txt<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>props<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>single<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span>value<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>foo<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>multiple<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span>values<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>bar<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>baz<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>url<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>http<span style="color:#000;font-weight:bold">:</span>//localhost<span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8081</span>/artifactory</code></pre></div>
+<p>Sample of uploading an artifact:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>upload_artifacts<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>target/vela-artifactory<span style="color:#000;font-weight:bold">:</span>v0<span style="color:#0000cf;font-weight:bold">.2.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>pull<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>parameters<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>action<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>upload<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>path<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>libs-snapshot-local/<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>sources<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>foo.txt<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>target/<span style="color:#8f5902;font-style:italic">*.jar</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>dist/<span style="color:#8f5902;font-style:italic">**/*.js</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>url<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>http<span style="color:#000;font-weight:bold">:</span>//localhost<span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8081</span>/artifactory</code></pre></div>
+<p>Sample of pretending to upload an artifact:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">steps:
+  - name: upload_artifacts
+    image: target/vela-artifactory:v0.2.0
+    pull: true
+    parameters:
+      action: upload
+<span style="color:#00a000">+     dry_run: true
+</span><span style="color:#00a000"></span>      path: libs-snapshot-local/
+      sources:
+        - foo.txt
+        - target/*.jar
+        - dist/**/*.js
+      url: http://localhost:8081/artifactory
+</code></pre></div>
+<p>Sample of using docker-promote on an artifact:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">steps<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>-<span style="color:#f8f8f8;text-decoration:underline"> </span>name<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>docker_promote_artifacts<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>image<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>target/vela-artifactory<span style="color:#000;font-weight:bold">:</span>v0<span style="color:#0000cf;font-weight:bold">.2.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>pull<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>parameters<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>action<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>docker-promote<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>target_repo<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>libs-snapshot-local<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>docker_registry<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>octocat/hello-world<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>tag<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>latest<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>target_docker_registry<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>octocat/hello-world<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>target_tags<span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;${BUILD_COMMIT:0:8}&#34;</span></code></pre></div>
+<h2 id="secrets">Secrets</h2>
+
+
+
+<div class="alert alert-warning" role="alert">
+
+Users should refrain from configuring sensitive information in their pipeline in plain text.
+</div>
+
+
+<h3 id="internal">Internal</h3>
+
+<p>The plugin accepts the following <code>parameters</code> for authentication:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Environment Variable Configuration</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>api_key</code></td>
+<td><code>ARTIFACTORY_API_KEY</code>, <code>CONFIG_API_KEY</code>, <code>PARAMETER_API_KEY</code></td>
+</tr>
+
+<tr>
+<td><code>password</code></td>
+<td><code>ARTIFACTORY_PASSWORD</code>, <code>CONFIG_PASSWORD</code>, <code>PARAMETER_PASSWORD</code></td>
+</tr>
+
+<tr>
+<td><code>username</code></td>
+<td><code>ARTIFACTORY_USERNAME</code>, <code>CONFIG_USERNAME</code>, <code>PARAMETER_USERNAME</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Users can use <a href="/docs/concepts/pipeline/secrets/">Vela secrets</a> to substitute these sensitive values at runtime:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">steps:
+  - name: copy_artifacts
+    image: target/vela-artifactory:v0.2.0
+    pull: true
+<span style="color:#00a000">+   secrets: [ artifactory_username, artifactory_password ]
+</span><span style="color:#00a000"></span>    parameters:
+      action: copy
+      path: libs-snapshot-local/foo.txt
+      target: libs-snapshot-local/bar.txt
+      url: http://localhost:8081/artifactory
+<span style="color:#a40000">-     username: octocat
+</span><span style="color:#a40000">-     password: superSecretPassword
+</span></code></pre></div>
+
+
+<div class="alert alert-info" role="alert">
+
+This example will add the <code>secrets</code> to the <code>copy_artifacts</code> step as environment variables:</p>
+
+<ul>
+<li><code>ARTIFACTORY_USERNAME</code>=<value></li>
+<li><code>ARTIFACTORY_PASSWORD</code>=<value></li>
+</ul>
+</div>
+
+
+<h3 id="external">External</h3>
+
+<p>The plugin accepts the following files for authentication:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Volume Configuration</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>api_key</code></td>
+<td><code>/vela/parameters/config/artifactory/api_key</code>, <code>/vela/secrets/artifactory/api_key</code></td>
+</tr>
+
+<tr>
+<td><code>password</code></td>
+<td><code>/vela/parameters/config/artifactory/password</code>, <code>/vela/secrets/artifactory/password</code></td>
+</tr>
+
+<tr>
+<td><code>username</code></td>
+<td><code>/vela/parameters/config/artifactory/username</code>, <code>/vela/secrets/artifactory/username</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Users can use <a href="/docs/concepts/pipeline/secrets/">Vela external secrets</a> to substitute these sensitive values at runtime:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">steps:
+  - name: copy_artifacts
+    image: target/vela-artifactory:v0.2.0
+    pull: true
+    parameters:
+      action: copy
+      path: libs-snapshot-local/foo.txt
+      target: libs-snapshot-local/bar.txt
+      url: http://localhost:8081/artifactory
+<span style="color:#a40000">-     username: octocat
+</span><span style="color:#a40000">-     password: superSecretPassword
+</span></code></pre></div>
+
+
+<div class="alert alert-info" role="alert">
+
+This example will read the secrets values in the volume stored at <code>/vela/secrets/</code>:
+</div>
+
+
+<h2 id="parameters">Parameters</h2>
+
+<p>The following parameters are used to configure the image:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td>action to perform against Artifactory</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>api_key</code></td>
+<td>API key for communication with Artifactory</td>
+<td><code>false</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>dry_run</code></td>
+<td>enables pretending to perform the action</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>log_level</code></td>
+<td>set the log level for the plugin</td>
+<td><code>true</code></td>
+<td><code>info</code></td>
+</tr>
+
+<tr>
+<td><code>password</code></td>
+<td>password for communication with Artifactory</td>
+<td><code>false</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>path</code></td>
+<td>source/target Artifactory path to artifact(s) for action</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>url</code></td>
+<td>Artifactory instance to communicate with</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>username</code></td>
+<td>user name for communication with Artifactory</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="copy">Copy</h4>
+
+<p>The following parameters are used to configure the <code>copy</code> action:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>flat</code></td>
+<td>enables removing source directory hierarchy</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>recursive</code></td>
+<td>enables copying sub-directories for the artifact(s)</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>target</code></td>
+<td>target Artifactory path to copy artifact(s) to</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="delete">Delete</h4>
+
+<p>The following parameters are used to configure the <code>delete</code> action:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>recursive</code></td>
+<td>enables removing sub-directories for the artifact(s)</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="docker-promote">Docker-Promote</h3>
+
+<p>The following parameters are used to configure the <code>docker-promote</code> action:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>target_repo</code></td>
+<td>name of the docker registry containing the image</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>docker_registry</code></td>
+<td>path to image in docker registry</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>target_docker_registry</code></td>
+<td>path for target image in docker registry</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>tag</code></td>
+<td>name of the tag for promoting</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>target_tags</code></td>
+<td>name of the final tags after promotion</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+
+<tr>
+<td><code>copy</code></td>
+<td>set to copy instead of moving the image</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="set-prop">Set-Prop</h4>
+
+<p>The following parameters are used to configure the <code>set-prop</code> action:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>props</code></td>
+<td>properties to set on the artifact(s)</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="upload">Upload</h4>
+
+<p>The following parameters are used to configure the <code>upload</code> action:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>flat</code></td>
+<td>enables removing source directory hierarchy</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>include_dirs</code></td>
+<td>enables including sub-directories for the artifact(s)</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>recursive</code></td>
+<td>enables uploading sub-directories for the artifact(s)</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>regexp</code></td>
+<td>enables reading the sources as a regular expression</td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>sources</code></td>
+<td>list of artifact(s) to upload</td>
+<td><code>true</code></td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="template">Template</h2>
+
+<p>COMING SOON!</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>You can start troubleshooting this plugin by tuning the level of logs being displayed:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">steps:
+  - name: copy_artifacts
+    image: target/vela-artifactory:v0.2.0
+    pull: true
+    parameters:
+      action: copy
+<span style="color:#00a000">+     log_level: trace
+</span><span style="color:#00a000"></span>      path: libs-snapshot-local/foo.txt
+      target: libs-snapshot-local/bar.txt
+      url: http://localhost:8081/artifactory
+</code></pre></div>
+<p>Below are a list of common problems and how to solve them:</p>
+
+<p>COMING SOON!</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified August 12, 2020: <a  href="https://github.com/go-vela/docs/commit/c768c8571505560c1c3b35535bacad3121625d9c">feat: add docs for external secrets (#156) (c768c85)</a>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/go-vela">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://gophers.slack.com/app_redirect?channel=CNRRKE8KY">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+    <a class="text-white" target="_blank" href="mailto:vela@target.com">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2020 Target Brands All Rights Reserved</small>
+        <small class="ml-1"><a href="https://github.com/go-vela/server/blob/master/LICENSE" target="_blank">Privacy Policy</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<script src="/docs/js/main.min.249bfd804cb79020e7c423ccdbcde3013d7a34a1365fe174e162d05ba8fbbfdf.js" integrity="sha256-JJv9gEy3kCDnxCPM283jAT16NKE2X&#43;F04WLQW6j7v98=" crossorigin="anonymous"></script>
+
+
+
+  </body>
+</html>

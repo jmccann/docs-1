@@ -1,0 +1,375 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Getting Started</title>
+    <link>https://go-vela.github.io/docs/usage/getting-started/</link>
+    <description>Recent content in Getting Started on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/usage/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Usage: Authenticate</title>
+      <link>https://go-vela.github.io/docs/usage/getting-started/authenticate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/usage/getting-started/authenticate/</guid>
+      <description>
+        
+        
+        
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Warning&lt;/h4&gt;
+These docs assume you have Vela running.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;ui&#34;&gt;UI&lt;/h2&gt;
+
+&lt;p&gt;Navigate to your deployed instance and follow the OAuth workflow presented on the web interface.&lt;/p&gt;
+
+&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
+
+&lt;p&gt;Please see authentication in the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/authentication/&#34;&gt;CLI reference&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you have not yet installed the CLI, see &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/install/&#34;&gt;CLI install reference&lt;/a&gt; first.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;api&#34;&gt;API&lt;/h2&gt;
+
+&lt;p&gt;Please see authentication in the &lt;a href=&#34;https://go-vela.github.io/docs/docs/api/authentication/&#34;&gt;API reference&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;sdk&#34;&gt;SDK&lt;/h2&gt;
+
+&lt;p&gt;Please see authentication in the &lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/authentication/&#34;&gt;sdk reference&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Usage: Roles</title>
+      <link>https://go-vela.github.io/docs/usage/getting-started/roles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/usage/getting-started/roles/</guid>
+      <description>
+        
+        
+        
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Warning&lt;/h4&gt;
+At this time the only Source Control Provider is GitHub. So this documentation is tailored for those users.
+&lt;/div&gt;
+
+
+&lt;p&gt;Vela does not maintain any authentication (AuthN) or authorization (AuthZ) internally, but instead inherits its access from the source (version control) provider. More information on GitHub&amp;rsquo;s access model can be found in their &lt;a href=&#34;https://help.github.com/en/github/getting-started-with-github/access-permissions-on-github&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Platform Roles:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Admin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Source Provider Roles:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Admin&lt;/li&gt;
+&lt;li&gt;Write&lt;/li&gt;
+&lt;li&gt;Read&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;platform-roles&#34;&gt;Platform Roles&lt;/h3&gt;
+
+&lt;p&gt;Platform admins have full control when interacting with the CLI, UI, and API.&lt;/p&gt;
+
+&lt;h3 id=&#34;source-provider-roles&#34;&gt;Source Provider Roles:&lt;/h3&gt;
+
+&lt;p&gt;Admins within the GitHub organization have the option to use GitHub orgs to allow users to have permissions on all repositories in the org, or to use fine-grained access of adding access for users directly to individual repositories.&lt;/p&gt;
+
+&lt;h4 id=&#34;admin&#34;&gt;Admin&lt;/h4&gt;
+
+&lt;p&gt;The &lt;strong&gt;admin&lt;/strong&gt; role enables full access to the repository, which grants the following access levels for resources:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Access&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Repo&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Build&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Step&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Service&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Log&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Secret&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Write&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Read&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;write&#34;&gt;Write&lt;/h4&gt;
+
+&lt;p&gt;The &lt;strong&gt;write&lt;/strong&gt; role enables read and write access to the repository, which grants the following access levels for resources:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Access&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Repo&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Build&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Step&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Service&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Log&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Secret&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Write&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Read&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;read&#34;&gt;Read&lt;/h4&gt;
+
+&lt;p&gt;The &lt;strong&gt;read&lt;/strong&gt; role enables read access to the repository, which grants the following access levels for resources:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Access&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Repo&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Build&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Step&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Service&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Log&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Secret&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Write&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Read&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Y&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;N&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Usage: Enable a Repo</title>
+      <link>https://go-vela.github.io/docs/usage/getting-started/enable_repo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/usage/getting-started/enable_repo/</guid>
+      <description>
+        
+        
+        
+
+
+
+&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note:&lt;/h4&gt;
+You will need &lt;strong&gt;Admin&lt;/strong&gt; access to the repo to be able to activate it in Vela. This is because you need &lt;strong&gt;Admin&lt;/strong&gt; access to be able to add webhooks
+to the repo.
+&lt;/div&gt;
+
+
+&lt;h3 id=&#34;via-the-ui&#34;&gt;Via the UI&lt;/h3&gt;
+
+&lt;p&gt;For this example, we&amp;rsquo;ll go over using the UI to add the repo. You can always head over to the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/repo/add/&#34;&gt;CLI docs&lt;/a&gt; for docs on how to add a repo via CLI.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Log into your Vela instance.&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;Add Repositories&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Select the Org from the available list.&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;Add&amp;rdquo; next to the repo you would like to add.
+
+&lt;ol&gt;
+&lt;li&gt;Alternatively you can &amp;ldquo;Add All&amp;rdquo; repos in an org.&lt;/li&gt;
+&lt;li&gt;If your repo doesn&amp;rsquo;t exist, try clicking &amp;ldquo;Refresh List&amp;rdquo; in the top right.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Your repo now has the necessary web hook to Vela.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Usage: Start a Build</title>
+      <link>https://go-vela.github.io/docs/usage/getting-started/start_build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/usage/getting-started/start_build/</guid>
+      <description>
+        
+        
+        &lt;p&gt;If you&amp;rsquo;ve followed the documentation for &lt;a href=&#34;https://go-vela.github.io/docs/docs/usage/getting-started/enable_repo/&#34;&gt;enabling a repo&lt;/a&gt; and &lt;a href=&#34;https://go-vela.github.io/docs/docs/usage/getting-started/write_pipeline/&#34;&gt;writing a pipeline&lt;/a&gt;, all that should be left is to push your pipeline to your repo.&lt;/p&gt;
+
+&lt;p&gt;If a build does not trigger when your push a change to your repo, check the webhook response to see if there is an error.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Usage: Skipping a Build</title>
+      <link>https://go-vela.github.io/docs/usage/getting-started/skipping_build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/usage/getting-started/skipping_build/</guid>
+      <description>
+        
+        
+        &lt;p&gt;To prevent Vela from running a build for a commit, add one of the following to your commit title or message:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;[skip ci]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[ci skip]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[skip vela]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[vela skip]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;***no_ci***&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note:&lt;/h4&gt;
+You can use upper or lower case.
+&lt;/div&gt;
+
+
+&lt;p&gt;Vela will receive the payload from the source control provider and return a 200 response with a reason for why a build was not triggered.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Usage: Understanding the Workspace</title>
+      <link>https://go-vela.github.io/docs/usage/getting-started/workspace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/usage/getting-started/workspace/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;Vela uses a shared volume model between steps to allow shared file system during the build process. These volumes should be considered ephemeral in the sense once a build completes execution all data via the volume being destroyed.&lt;/p&gt;
+
+&lt;h2 id=&#34;working-directory&#34;&gt;Working Directory&lt;/h2&gt;
+
+&lt;p&gt;This ensures the configuration, code, dependencies, and compiled binaries are persisted and shared between the steps. The default workspace attached to every build is unique and matches the below pattern:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Source:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Syntax&lt;/span&gt;
+/vela/src/&amp;lt;source_provider/&amp;lt;&lt;span style=&#34;color:#204a87&#34;&gt;source&lt;/span&gt; org&amp;gt;/&amp;lt;&lt;span style=&#34;color:#204a87&#34;&gt;source&lt;/span&gt; repo&amp;gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Example&lt;/span&gt;
+/vela/src/github.com/go-vela/hello-world&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Secrets:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Syntax&lt;/span&gt;
+/vela/secrets/&amp;lt;path&amp;gt;/&amp;lt;key&amp;gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Example&lt;/span&gt;
+/vela/secrets/github/username/
+/vela/secrets/github/password/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Parameters:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Syntax&lt;/span&gt;
+/vela/secrets/&amp;lt;path&amp;gt;/&amp;lt;key&amp;gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Example&lt;/span&gt;
+/vela/parameters/github/repo/settings/topics&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+Before you use the parameters volume check the plugin authors docs to ensure it has support to read from &lt;code&gt;/vela/parameters&lt;/code&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;This would be the equivalent to the following Docker commands being executed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker volume create build-workspace
+
+docker run --volume&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;build-workspace:/vela/ &amp;lt;image&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;cloning&#34;&gt;Cloning&lt;/h2&gt;
+
+&lt;p&gt;Vela automatically checks out the repository into a local volume that is mounted into each Docker container. This volume is generally referred to as a workspace, which defines the working directory shared by all steps in a build.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git clone https://github.com/go-vela/hello-world.git &amp;lt;workspace&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+In cases where your clone needs special configuration you should add a step at the beginning of the pipeline adding the desired behavior.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

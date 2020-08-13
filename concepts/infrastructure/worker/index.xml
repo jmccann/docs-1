@@ -1,0 +1,65 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Worker</title>
+    <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/</link>
+    <description>Recent content in Worker on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/infrastructure/worker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Executor</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/executor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/worker/executor/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;executor&lt;/code&gt; component is one of the worker components for Vela.&lt;/p&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Queue</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/worker/queue/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;queue&lt;/code&gt; component is one of the worker components for Vela.&lt;/p&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Runtime</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/runtime/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/worker/runtime/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;runtime&lt;/code&gt; component is one of the worker components for Vela.&lt;/p&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,805 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Pipeline</title>
+    <link>https://go-vela.github.io/docs/concepts/pipeline/</link>
+    <description>Recent content in Pipeline on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/pipeline/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Metadata</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/metadata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/metadata/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;metadata&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows extra information to be passed to the pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables compiling the pipeline as a template&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for a &lt;code&gt;metadata&lt;/code&gt; declaration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  template: false
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Secrets</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/secrets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/secrets/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;secrets&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide sensitive information into the pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+A single, ephemeral run of a pipeline is known as a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;p&gt;Secrets are always retrieved at the beginning of a pipeline before any services, stages or steps are created or started. They are extremely useful when you don&amp;rsquo;t want to provide sensitive information in plain text.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+Any variable provided with this declaration will allow step(s) to request access to these variables at runtime.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;engine&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of storage backend to fetch secret from&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;key&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;path to secret to fetch from storage backend&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of secret to reference in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;type&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of secret to fetch from storage backend&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;origin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;look up a secret via running a secret plugin&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+The following fields have a default value already set:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;engine&lt;/code&gt;: &lt;code&gt;native&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;key&lt;/code&gt;: &lt;code&gt;&amp;lt;secret name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;type&lt;/code&gt;: &lt;code&gt;repo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+secrets:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  - name: username
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    engine: native
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    key: username
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    type: repo
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  - name: password
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    engine: native
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    key: password
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    type: repo
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    secrets: [ username, password ]
+    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${USERNAME}&amp;#34; &amp;gt;&amp;gt; .netrc
+      - echo &amp;#34;password ${PASSWORD}&amp;#34; &amp;gt;&amp;gt; .netrc
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This pipeline will allow the following secrets to be referenced:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;username&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;password&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This pipeline will also add the following environment variables to the &lt;code&gt;test&lt;/code&gt; step:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;USERNAME=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PASSWORD=&amp;lt;value&amp;gt;&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Services</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;services&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide detached (headless), execution instructions for a pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+A single, ephemeral run of a pipeline is known as a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;p&gt;Services are always executed, in parallel inside an ephemeral &lt;a href=&#34;https://www.docker.com/resources/what-container&#34; target=&#34;_blank&#34;&gt;Docker container&lt;/a&gt;. They are extremely useful when your testing requires additional services such as a cache, database or queue.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+Services are always created at the beginning of a pipeline.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;entrypoint&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;command to execute inside the container&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;environment&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;variables injected into the container environment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Docker image used to create ephemeral container&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for the container in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ports&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;list of ports to map for the container in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pull&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable pulling the latest version of the image&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+services:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  - name: postgres
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    image: postgres:12
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Stages</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/stages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/stages/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;stages&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide parallel, execution instructions for a pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+A single, ephemeral run of a pipeline is known as a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;p&gt;Stages are always executed, in parallel, and are comprised of one or many &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;steps&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for the stage in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;needs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;stages that must complete before starting the current one&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;steps&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sequential execution instructions for the stage&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+stages:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  test:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    steps:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - name: test
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+          - go test ./...
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  build:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    steps:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - name: build
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+          - go build
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; stage and the &lt;code&gt;build&lt;/code&gt; stage at the same time.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Steps</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;steps&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide sequential, execution instructions for a pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+A single, ephemeral run of a pipeline is known as a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;p&gt;Steps are always executed, in the order they are defined, inside an ephemeral &lt;a href=&#34;https://www.docker.com/resources/what-container&#34; target=&#34;_blank&#34;&gt;Docker container&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If the container returns a non-zero exit code, the build immediately terminates and returns a failure status.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+To run &lt;code&gt;steps&lt;/code&gt; in parallel, you can visit the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/stages/&#34;&gt;stages documentation&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;commands&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;execution instructions to run inside the container&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;detach&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables running the container in a headless mode&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;entrypoint&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;command to execute inside the container&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;environment&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;variables injected into the container environment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Docker image used to create ephemeral container&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for the container in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;parameters&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;extra configuration variables for a plugin&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;privileged&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables running the container with extra privileges&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pull&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable pulling the latest version of the image&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ruleset&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;conditions to limit the execution of the container&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;secrets&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sensitive variables injected into the container environment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of template to expand in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+steps:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  - name: test
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - go test ./...
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  - name: build
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - go build
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Template</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/templates/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;template&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the name of template to expand in the pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for the template in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;path to template in remote system&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;type&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of template provided from the remote system&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+templates
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  - name: template
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    source: github.com/vela/atlas/cmd
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+    type: github
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    template:
+      name: template
+      vars:
+        cmd: go test ./...
+
+  - name: build
+    template:
+      name: template
+      vars:
+        cmd: go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Version</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/version/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/version/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;version&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the syntax version used to evaluate the pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All Vela pipelines will require a &lt;code&gt;version&lt;/code&gt; declaration to be provided.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for a &lt;code&gt;version&lt;/code&gt; declaration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+version: &amp;#34;1&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Worker</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/worker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/worker/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;worker&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to route your build to a subset of workers within a Vela cluster.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+Routes can &lt;strong&gt;only&lt;/strong&gt; be made by a system administrator.
+&lt;/div&gt;
+
+
+&lt;p&gt;Routing can guarantee a build is ran on a specific platform or runtime within a cluster. This may be extremely useful when your building artifacts that can only be built on specific architectures.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+It&amp;rsquo;s import to remember that pinning yourself to workers lowers the number of available workers you can run on.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;platform&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;run a build on a specific platform available within the cluster&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;flavor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;run a build on a flavor of workers within platform&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+worker:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  platform: docker
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  flavor: large
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start and run on a worker with the available route &lt;code&gt;docker:large&lt;/code&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

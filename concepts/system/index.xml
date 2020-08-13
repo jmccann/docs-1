@@ -1,0 +1,1257 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – System</title>
+    <link>https://go-vela.github.io/docs/concepts/system/</link>
+    <description>Recent content in System on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/system/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Build</title>
+      <link>https://go-vela.github.io/docs/concepts/system/build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/build/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;build&lt;/code&gt; is defined as a single, ephemeral execution of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A build is comprised of one or many &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/service/&#34;&gt;services&lt;/a&gt; and &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/step/&#34;&gt;steps&lt;/a&gt; that contain the instructions to execute from the pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+A build is typically created from a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/hook/&#34;&gt;hook&lt;/a&gt; triggered by a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/repo/&#34;&gt;repo&lt;/a&gt; in the source control provider.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;author&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;branch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;base_ref&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sha from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;clone&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full clone url for the repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;commit&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sha from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;deploy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;environment targeted for deployment&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;distribution&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;operating system the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;email&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;email for author from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;enqueued&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was published to the queue&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during build execution time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;event&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;event from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;finished&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was completed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;link&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to the build in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;message from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build triggered from the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;parent&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for previous build triggered from the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ref&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;reference from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;runtime&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime the build was executed with&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sender&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sender that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;started&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was started&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full url from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;title from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;builds&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/build/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/build/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/build/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Hook</title>
+      <link>https://go-vela.github.io/docs/concepts/system/hook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/hook/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;hook&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;hook&lt;/code&gt; is defined as a single, webhook object received from a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/repo/&#34;&gt;repo&lt;/a&gt; in the source control provider prompting Vela to perform an action.&lt;/p&gt;
+
+&lt;p&gt;In most cases, processing a hook involves fetching the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; from the repo and triggering a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;From &lt;a href=&#34;https://help.github.com/en/github/extending-github/about-webhooks&#34; target=&#34;_blank&#34;&gt;GitHub&amp;rsquo;s webhook documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;branch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the commit that triggered the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build created from the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the hook was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during hook processing&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;event&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;event from the commit that triggered the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the hook was received from&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for hook in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;link&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to hook from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for hook triggered from the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for hook from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;hooks&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/build/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/build/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/build/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Log</title>
+      <link>https://go-vela.github.io/docs/concepts/system/log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/log/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;log&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;log&lt;/code&gt; is defined as a sequence of records about the actions performed by a worker in a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build the log entry is for&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;data&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]byte&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;raw data from the log entry&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for log in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;service_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for service the log entry is for&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;step_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for step the log entry is for&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;logs&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;API
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/build/logs/&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/service/logs/&#34;&gt;Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/step/logs/&#34;&gt;Step&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/log/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;Go&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/build/logs/&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/service/logs/&#34;&gt;Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/step/logs/&#34;&gt;Step&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Repo</title>
+      <link>https://go-vela.github.io/docs/concepts/system/repo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/repo/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;repo&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;repo&lt;/code&gt; is defined as the upstream dependency from the source control provider used to store code and trigger &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/hook/&#34;&gt;hooks&lt;/a&gt; to Vela.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;From &lt;a href=&#34;https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repositories&#34; target=&#34;_blank&#34;&gt;GitHub&amp;rsquo;s repository documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A repository is like a folder for your project. Your project&amp;rsquo;s repository contains all of your project&amp;rsquo;s files and stores each file&amp;rsquo;s revision history. You can also discuss and manage your project&amp;rsquo;s work within the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;active&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the current status of the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_comment&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;comment&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_deploy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;deployment&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_pull&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;pull_request&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_push&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;push&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_tag&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;tag&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;branch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;that triggered the build&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;clone&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full clone url for the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;full_name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique full name (&lt;code&gt;&amp;lt;org&amp;gt;/&amp;lt;repo&amp;gt;&lt;/code&gt;) for the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;hash&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique secret hash generated by the system for the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;link&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to repo from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique repo name in org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;private&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies status of repo from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;timeout&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total time allotted per build execution for repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;trusted&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables elevated permissions for builds executed for repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;user_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for user that activated the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;visibility&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;access level required to view the repo in Vela&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;repos&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/repo/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/repo/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/repo/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Secret</title>
+      <link>https://go-vela.github.io/docs/concepts/system/secret/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/secret/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;secret&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;secret&lt;/code&gt; is defined as a piece of sensitive data or information that you want to tightly control access to. These are extremely useful when trying to avoid providing the data in plain text. They typically include&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+The following list are some examples of secrets:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;API keys&lt;/li&gt;
+&lt;li&gt;certificates&lt;/li&gt;
+&lt;li&gt;passwords&lt;/li&gt;
+&lt;li&gt;tokens&lt;/li&gt;
+&lt;li&gt;much, much more&amp;hellip;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_command&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable injecting a secret with a &lt;code&gt;commands&lt;/code&gt; declaration&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;events&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;whitelist of events permitted to access the secret&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for secret in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;images&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;whitelist of images permitted to access the secret&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the secret&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique repo name in org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;team&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique team name in org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;type&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of secret to store in the storage backend&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sensitive data or information stored in the backend&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;secrets&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;types&#34;&gt;Types&lt;/h4&gt;
+
+&lt;p&gt;The following types are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to any repository in an organization&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to a single repository in an organization&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;shared&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to any repository in the installation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h6 id=&#34;org&#34;&gt;Org&lt;/h6&gt;
+
+&lt;p&gt;Secrets with an &lt;code&gt;org&lt;/code&gt; type are accessible by any repository in an organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to have &lt;code&gt;admin&lt;/code&gt; access to the organization.
+&lt;/div&gt;
+
+
+&lt;h6 id=&#34;repo&#34;&gt;Repo&lt;/h6&gt;
+
+&lt;p&gt;Secrets with a &lt;code&gt;repo&lt;/code&gt; type are accessible by a single repository in an organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to have &lt;code&gt;admin&lt;/code&gt; access to the repository.
+&lt;/div&gt;
+
+
+&lt;h6 id=&#34;shared&#34;&gt;Shared&lt;/h6&gt;
+
+&lt;p&gt;Secrets with a &lt;code&gt;shared&lt;/code&gt; type are accessible by any repository in the Vela installation.&lt;/p&gt;
+
+&lt;p&gt;These secrets are unique, because they require a team to exist in your organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to be a member of the team in the organization.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/secret/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/secret/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/secret/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Service</title>
+      <link>https://go-vela.github.io/docs/concepts/system/service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/service/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;service&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;service&lt;/code&gt; is defined as a detached (headless), execution instruction for a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each service is executed inside an ephemeral &lt;a href=&#34;https://www.docker.com/resources/what-container&#34; target=&#34;_blank&#34;&gt;Docker container&lt;/a&gt; and starts at the beginning of a pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build the service executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the service was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;distribution&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;operating system the service was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during service execution time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;exit_code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;return code received from the service execution&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;finished&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was completed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the service was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for service in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Docker image used to create the service&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the service for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for service for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;runtime&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime the service was executed with&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;started&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the service was started&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;services&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/service/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/service/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/service/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Step</title>
+      <link>https://go-vela.github.io/docs/concepts/system/step/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/step/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;step&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;step&lt;/code&gt; is defined as a sequential, execution instruction for a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each step is executed inside an ephemeral &lt;a href=&#34;https://www.docker.com/resources/what-container&#34; target=&#34;_blank&#34;&gt;Docker container&lt;/a&gt; and are always executed in the order they are defined.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build the step executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the step was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;distribution&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;operating system the step was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during step execution time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;exit_code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;return code received from the step execution&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;finished&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was completed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the step was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for step in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Docker image used to create the step&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the step for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for step for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;runtime&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime the step was executed with&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;started&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the step was started&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the step&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;stage&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of the stage the step was executed in&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;steps&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/step/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/step/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/step/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: User</title>
+      <link>https://go-vela.github.io/docs/concepts/system/user/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/user/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;user&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;user&lt;/code&gt; is defined as a personal account granted to each individual who registers in Vela.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;active&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the current status of the user&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;admin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables elevated permissions for builds executed for repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;favorites&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;whitelist of repos the user favorite in the UI&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;hash&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique secret hash generated by the system for the user&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for user in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the user in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique access token for user account in source control provider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;users&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/user/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

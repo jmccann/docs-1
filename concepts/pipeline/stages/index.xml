@@ -1,0 +1,122 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Stages</title>
+    <link>https://go-vela.github.io/docs/concepts/pipeline/stages/</link>
+    <description>Recent content in Stages on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/pipeline/stages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Needs</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/stages/needs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/stages/needs/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;needs&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/stages/&#34;&gt;stage&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide other stages that must complete before starting the current one.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+stages:
+  test:
+    steps:
+      - name: test
+        image: golang
+        commands:
+          - go test ./...
+  build:
+&lt;span style=&#34;color:#00a000&#34;&gt;+    needs: [ test ]
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    steps:
+      - name: build
+        image: golang
+        commands:
+          - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; stage first, then run the &lt;code&gt;build&lt;/code&gt; stage.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Steps</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/stages/steps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/stages/steps/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;steps&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/stages/&#34;&gt;stage&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide sequential, execution instructions for a stage.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+For more information, you can visit the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;steps documentation&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+stages:
+  test:
+&lt;span style=&#34;color:#00a000&#34;&gt;+    steps:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - name: test
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+          - go test ./...
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;  build:
+&lt;span style=&#34;color:#00a000&#34;&gt;+    steps:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - name: build
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+          - go build
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; stage and the &lt;code&gt;build&lt;/code&gt; stage at the same time.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

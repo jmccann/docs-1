@@ -1,0 +1,519 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Server</title>
+    <link>https://go-vela.github.io/docs/concepts/infrastructure/server/</link>
+    <description>Recent content in Server on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/infrastructure/server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Compiler</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/compiler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/compiler/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;compiler&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for transforming a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; into an executable representation for the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/infrastructure/worker/&#34;&gt;worker&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Database</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/database/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;database&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for storing its &lt;a href=&#34;https://en.wikipedia.org/wiki/Data_at_rest&#34; target=&#34;_blank&#34;&gt;data at rest&lt;/a&gt;. This data is an organized collection of information necessary for the platform to operate.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_DRIVER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of client to control and operate database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONFIG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full connection string to database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.connection.open&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONNECTION_OPEN&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total number of open connections to database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.connection.idle&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONNECTION_IDLE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total number of idle connections to database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.connection.life&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONNECTION_LIFE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total amount of time a connection is reusable&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:
+* &lt;code&gt;DATABASE_DRIVER&lt;/code&gt; - type of client to control and operate database
+* &lt;code&gt;VELA_DATABASE_DRIVER&lt;/code&gt; - type of client to control and operate database
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;drivers&#34;&gt;Drivers&lt;/h4&gt;
+
+&lt;p&gt;The following drivers are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Documentation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sqlite3&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a SQLite database for storage&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.sqlite.org&#34; target=&#34;_blank&#34;&gt;https://www.sqlite.org&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;postgres&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a PostgreSQL database for storage&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.postgresql.org&#34; target=&#34;_blank&#34;&gt;https://www.postgresql.org&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;limitations&#34;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;These are the known limitations for this component:&lt;/p&gt;
+
+&lt;h4 id=&#34;archives&#34;&gt;Archives&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not perform any archival of data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;backups&#34;&gt;Backups&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not perform any backups of data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;creation&#34;&gt;Creation&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not create your database in the system&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;migration&#34;&gt;Migration&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not handle data migrations&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Queue</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/queue/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;queue&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for publishing workloads to be completed by a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/infrastructure/worker/&#34;&gt;worker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_DRIVER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of client to control and operate queue&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_CONFIG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full connection string to queue&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.cluster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_CLUSTER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;configures the client for a queue cluster&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.routes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_ROUTES&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique channels for publishing workloads&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;QUEUE_DRIVER&lt;/code&gt; - type of client to control and operate queue&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VELA_QUEUE_DRIVER&lt;/code&gt; - type of client to control and operate queue
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;drivers&#34;&gt;Drivers&lt;/h4&gt;
+
+&lt;p&gt;The following drivers are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Documentation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;redis&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a Redis queue for workloads&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://redis.io&#34; target=&#34;_blank&#34;&gt;https://redis.io&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;kafka&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a Kafka queue for workloads&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://kafka.apache.org&#34; target=&#34;_blank&#34;&gt;https://kafka.apache.org&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+Kafka is not fully supported. Using Kafka is coming soon!
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;limitations&#34;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;These are the known limitations for this component:&lt;/p&gt;
+
+&lt;h4 id=&#34;backups&#34;&gt;Backups&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not perform any backups of data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;creation&#34;&gt;Creation&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not create your database in the system&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Secret</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/secret/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/secret/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;secret&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for storing and accessing &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/secret/&#34;&gt;secrets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vault.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SECRET_VAULT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables the Vault secret engine&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vault.addr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SECRET_VAULT_ADDR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to Vault installation&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vault.token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SECRET_VAULT_TOKEN&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;token required to read/write secrets to Vault&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SECRET_VAULT&lt;/code&gt; - enables the Vault secret engine&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VELA_SECRET_VAULT&lt;/code&gt; - enables the Vault secret engine
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Source</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/source/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;source&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for integrating with the source code.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This system is often referred to as a &amp;ldquo;version control system&amp;rdquo; or &amp;ldquo;source control provider&amp;rdquo;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_DRIVER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of client to control and operate source&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.url&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_URL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to source system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.client&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_CLIENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;OAuth client ID for source system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.secret&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_SECRET&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;OAuth client secret for source system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.context&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_CONTEXT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;message to set in commit status for source system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:
+* &lt;code&gt;SOURCE_DRIVER&lt;/code&gt; - type of client to control and operate queue
+* &lt;code&gt;VELA_SOURCE_DRIVER&lt;/code&gt; - type of client to control and operate queue
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;drivers&#34;&gt;Drivers&lt;/h4&gt;
+
+&lt;p&gt;The following drivers are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Documentation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;github&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a GitHub instance for source control&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/about&#34; target=&#34;_blank&#34;&gt;https://github.com/about&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;gitlab&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a GitLab instance for source control&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://about.gitlab.com&#34; target=&#34;_blank&#34;&gt;https://about.gitlab.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+GitLab is not fully supported. Using GitLab is coming soon!
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

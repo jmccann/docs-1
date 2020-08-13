@@ -1,0 +1,372 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Deployment</title>
+    <link>https://go-vela.github.io/docs/cli/deployment/</link>
+    <description>Recent content in Deployment on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/cli/deployment/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Cli: Add</title>
+      <link>https://go-vela.github.io/docs/cli/deployment/add/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/cli/deployment/add/</guid>
+      <description>
+        
+        
+        
+
+&lt;h2 id=&#34;command&#34;&gt;Command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vela add deployment &amp;lt;parameters...&amp;gt; &amp;lt;arguments...&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+For more information, you can run &lt;code&gt;vela add deployment --help&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;parameters&#34;&gt;Parameters&lt;/h2&gt;
+
+&lt;p&gt;The following parameters are used to configure the command:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Environment Variables&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of organization for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_ORG&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of repository for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_REPO&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_REPO&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ref&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of branch, commit, or tag for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_DEPLOYMENT&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;target&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of target environment for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_TARGET&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_TARGET&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;short description for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_DESCRIPTION&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_DESCRIPTION&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;task&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of task for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_TASK&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_TASK&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;output&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;format the output for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_OUTPUT&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_OUTPUT&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This command also supports setting the following parameters via a configuration file:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;output&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/config/&#34;&gt;CLI config documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;permissions&#34;&gt;Permissions&lt;/h2&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This section assumes you have already installed and setup the CLI.&lt;/p&gt;
+
+&lt;p&gt;To install the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/install/&#34;&gt;installation documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To setup the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/authentication/&#34;&gt;authentication documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;request&#34;&gt;Request&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vela add deployment --org github --repo octocat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;response&#34;&gt;Response&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;deployment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://api.github.com/repos/github/octocat/deployments/1&amp;#34;&lt;/span&gt; was created&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cli: Get</title>
+      <link>https://go-vela.github.io/docs/cli/deployment/get/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/cli/deployment/get/</guid>
+      <description>
+        
+        
+        
+
+&lt;h2 id=&#34;command&#34;&gt;Command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vela get deployment &amp;lt;parameters...&amp;gt; &amp;lt;arguments...&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+For more information, you can run &lt;code&gt;vela get deployment --help&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;parameters&#34;&gt;Parameters&lt;/h2&gt;
+
+&lt;p&gt;The following parameters are used to configure the command:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Environment Variables&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of organization for the deployments&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_ORG&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of repository for the deployments&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_REPO&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_REPO&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;output&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;format the output for the deployments&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_OUTPUT&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_OUTPUT&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;page&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;prints a specific page of deployments&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_PAGE&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_PAGE&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;per.page&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;number of deployments to print per page&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_PER_PAGE&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_PER_PAGE&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This command also supports setting the following parameters via a configuration file:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;output&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/config/&#34;&gt;CLI config documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;permissions&#34;&gt;Permissions&lt;/h2&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This section assumes you have already installed and setup the CLI.&lt;/p&gt;
+
+&lt;p&gt;To install the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/install/&#34;&gt;installation documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To setup the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/authentication/&#34;&gt;authentication documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;request&#34;&gt;Request&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vela get deployment --org github --repo octocat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;response&#34;&gt;Response&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ID  TASK         USER     REF     TARGET
+&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;   deploy:vela  octocat  master  production
+&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;   deploy:vela  octocat  master  production&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Cli: View</title>
+      <link>https://go-vela.github.io/docs/cli/deployment/view/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/cli/deployment/view/</guid>
+      <description>
+        
+        
+        
+
+&lt;h2 id=&#34;command&#34;&gt;Command&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vela view deployment &amp;lt;parameters...&amp;gt; &amp;lt;arguments...&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+For more information, you can run &lt;code&gt;vela view deployment --help&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;parameters&#34;&gt;Parameters&lt;/h2&gt;
+
+&lt;p&gt;The following parameters are used to configure the command:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Environment Variables&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of organization for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_ORG&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of repository for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_REPO&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_REPO&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;deployment&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;number of the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_DEPLOYMENT&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;output&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;format the output for the deployment&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;VELA_OUTPUT&lt;/code&gt;, &lt;code&gt;DEPLOYMENT_OUTPUT&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This command also supports setting the following parameters via a configuration file:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;output&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more information, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/config/&#34;&gt;CLI config documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;permissions&#34;&gt;Permissions&lt;/h2&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This section assumes you have already installed and setup the CLI.&lt;/p&gt;
+
+&lt;p&gt;To install the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/install/&#34;&gt;installation documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To setup the CLI, please review the &lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/authentication/&#34;&gt;authentication documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;request&#34;&gt;Request&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vela view deployment --org github --repo octocat --deployment &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;response&#34;&gt;Response&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;id: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+repo_id: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+url: https://api.github.com/repos/github/octocat/deployments/1
+user: octocat
+commit: 48afb5bdc41ad69bf22588491333f7cf71135163
+ref: master
+task: deploy:vela
+target: production
+description: Deployment request from Vela&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

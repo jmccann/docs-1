@@ -1,0 +1,4475 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Concepts</title>
+    <link>https://go-vela.github.io/docs/concepts/</link>
+    <description>Recent content in Concepts on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Build</title>
+      <link>https://go-vela.github.io/docs/concepts/system/build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/build/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;build&lt;/code&gt; is defined as a single, ephemeral execution of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A build is comprised of one or many &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/service/&#34;&gt;services&lt;/a&gt; and &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/step/&#34;&gt;steps&lt;/a&gt; that contain the instructions to execute from the pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+A build is typically created from a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/hook/&#34;&gt;hook&lt;/a&gt; triggered by a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/repo/&#34;&gt;repo&lt;/a&gt; in the source control provider.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;author&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;branch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;base_ref&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sha from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;clone&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full clone url for the repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;commit&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sha from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;deploy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;environment targeted for deployment&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;distribution&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;operating system the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;email&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;email for author from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;enqueued&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was published to the queue&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during build execution time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;event&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;event from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;finished&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was completed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;link&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to the build in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;message&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;message from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build triggered from the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;parent&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for previous build triggered from the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ref&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;reference from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;runtime&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime the build was executed with&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sender&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sender that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;started&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was started&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full url from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;title from the commit that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;builds&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/build/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/build/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/build/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Commands</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/commands/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/commands/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;commands&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide execution instructions to run inside the container.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+   commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+     - go test ./...
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+     - go build
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+&lt;p&gt;Using the above example, the provided commands are converted to a simple shell script that looks like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; -e
+
+go &lt;span style=&#34;color:#204a87&#34;&gt;test&lt;/span&gt; ./...
+
+go build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In turn, the above shell script is executed as the Docker entrypoint for the container:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run --entrypoint&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;build.sh golang&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Compiler</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/compiler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/compiler/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;compiler&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for transforming a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; into an executable representation for the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/infrastructure/worker/&#34;&gt;worker&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Database</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/database/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;database&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for storing its &lt;a href=&#34;https://en.wikipedia.org/wiki/Data_at_rest&#34; target=&#34;_blank&#34;&gt;data at rest&lt;/a&gt;. This data is an organized collection of information necessary for the platform to operate.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_DRIVER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of client to control and operate database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONFIG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full connection string to database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.connection.open&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONNECTION_OPEN&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total number of open connections to database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.connection.idle&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONNECTION_IDLE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total number of idle connections to database&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;database.connection.life&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DATABASE_CONNECTION_LIFE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total amount of time a connection is reusable&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:
+* &lt;code&gt;DATABASE_DRIVER&lt;/code&gt; - type of client to control and operate database
+* &lt;code&gt;VELA_DATABASE_DRIVER&lt;/code&gt; - type of client to control and operate database
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;drivers&#34;&gt;Drivers&lt;/h4&gt;
+
+&lt;p&gt;The following drivers are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Documentation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sqlite3&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a SQLite database for storage&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.sqlite.org&#34; target=&#34;_blank&#34;&gt;https://www.sqlite.org&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;postgres&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a PostgreSQL database for storage&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.postgresql.org&#34; target=&#34;_blank&#34;&gt;https://www.postgresql.org&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;limitations&#34;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;These are the known limitations for this component:&lt;/p&gt;
+
+&lt;h4 id=&#34;archives&#34;&gt;Archives&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not perform any archival of data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;backups&#34;&gt;Backups&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not perform any backups of data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;creation&#34;&gt;Creation&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not create your database in the system&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;migration&#34;&gt;Migration&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not handle data migrations&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Detach</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/detach/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/detach/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;detach&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to run the container in a detached (headless) state.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+    commands:
+      - go build
+
+  - name: run
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    detach: true
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - ./main -http=:8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step and finally run the &lt;code&gt;run&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Engine</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/secrets/engine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/secrets/engine/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;engine&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/secrets/&#34;&gt;secret&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the name of the storage backend to fetch the secret from.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component has a default value of &lt;code&gt;native&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;p&gt;The following options are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;native&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses the Vela database for secret storage&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vault&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a HashiCorp Vault instance for secret storage&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;native&#34;&gt;Native&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;native&lt;/code&gt; secret engine is designed to store secrets in the Vela database.&lt;/p&gt;
+
+&lt;h4 id=&#34;vault&#34;&gt;Vault&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;vault&lt;/code&gt; secret engine is designed to store secrets in a &lt;a href=&#34;https://www.vaultproject.io/&#34; target=&#34;_blank&#34;&gt;HashiCorp Vault&lt;/a&gt; instance.&lt;/p&gt;
+
+&lt;p&gt;For secret storage information refer to &lt;a href=&#34;https://www.vaultproject.io/docs/&#34; target=&#34;_blank&#34;&gt;Vault&amp;rsquo;s documentation&lt;/a&gt;.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+Vault is currently not supported. Using Vault is coming soon!
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+secrets:
+  - name: username
+&lt;span style=&#34;color:#00a000&#34;&gt;+   engine: native
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    key: github/octocat/username
+    type: repo
+
+  - name: password
+&lt;span style=&#34;color:#00a000&#34;&gt;+   engine: native
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    key: github/octocat/password
+    type: repo
+
+steps:
+  - name: test
+    image: golang
+    secrets: [ username, password ]
+    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${USERNAME}&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;password ${PASSWORD}&amp;#34; &amp;gt; .netrc
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This pipeline will allow the following secrets to be referenced:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;username&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;password&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This pipeline will also add the following environment variables to the &lt;code&gt;test&lt;/code&gt; step:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;USERNAME=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PASSWORD=&amp;lt;value&amp;gt;&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Entrypoint</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/entrypoint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/entrypoint/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;entrypoint&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the command to execute inside the container.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    entrypoint: &amp;#34;/docker-entrypoint.sh&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Entrypoint</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/entrypoint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/entrypoint/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;entrypoint&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the command to execute inside the container.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+   template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    entrypoint: /usr/local/go/bin/go
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    entrypoint: /usr/local/go/bin/go
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Environment</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/environment/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;environment&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide variables injected into the container environment.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    environment:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      POSTGRES_DB: example
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      POSTGRES_USER: example
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://example@postgres:5432/example?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;defaults&#34;&gt;Defaults&lt;/h2&gt;
+
+&lt;p&gt;The following environment variables are injected into every service:&lt;/p&gt;
+
+&lt;h4 id=&#34;build-environment-variables&#34;&gt;Build Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_AUTHOR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_AUTHOR_EMAIL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat@github.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author email from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_BRANCH&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_CHANNEL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_COMMIT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;7fd1a60b01f91b314f59955a4e4d4e80d8edf11d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;commit sha from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_CREATED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556720958&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build creation time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_ENQUEUED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build enqueue time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_EVENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;push&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;webhook event that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_FINISHED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730045&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build completion time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_HOST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-worker-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the worker the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_LINK&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://vela-server.localhost/octocat/hello-world/1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;link to the build in the UI&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_MESSAGE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Merge pull request #6 from octocat/patch-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;message from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;build number&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_PARENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;previous build number&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_REF&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;refs/heads/master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;reference from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_STARTED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build start time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_SOURCE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world/commit/7fd1a60b01f91b314f59955a4e4d4e80d8edf11d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;link from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_TITLE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;push received from https://github.com/octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;title from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_WORKSPACE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/vela/src/github.com/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;working directory the build is executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_TAG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;v1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tag is populated from the source reference&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_PULL_REQUEST_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;pull request number is populated from the source reference&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BUILD_LINK&lt;/code&gt; is not populated if the Vela server is configured to run headless (no UI).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BUILD_TAG&lt;/code&gt; is only populated during &lt;code&gt;tag&lt;/code&gt; events.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BUILD_PULL_REQUEST_NUMBER&lt;/code&gt; is only populated during &lt;code&gt;pull_request&lt;/code&gt; events.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;vela-environment-variables&#34;&gt;Vela Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;environment is Vela&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_ADDR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-server.localhost&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the Vela server&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_CHANNEL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_DATABASE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;postgres&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;database Vela is connected to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_HOST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-worker-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the worker the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_QUEUE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;redis&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_RUNTIME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;docker&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime environment build was executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_SOURCE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;github&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_VERSION&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;v0.1.0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Vela version&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_WORKSPACE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/vela/src/github.com/github/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;working directory the build is executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CI&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;CI enabled is Vela&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;repository-environment-variables&#34;&gt;Repository Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_BRANCH&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;default branch of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_CLONE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world.git&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;clone url of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_FULL_NAME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full name of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_LINK&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;direct url of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_NAME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_PRIVATE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;privacy setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_TIMEOUT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;60&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;timeout setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_TRUSTED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;trusted setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Environment</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/environment/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;environment&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide variables injected into the container environment.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    environment:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      CGO_ENABLED: &amp;#39;0&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      GOOS: linux
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      GOARCH: amd64
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    environment:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      CGO_ENABLED: &amp;#39;0&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      GOOS: linux
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      GOARCH: amd64
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;defaults&#34;&gt;Defaults&lt;/h2&gt;
+
+&lt;p&gt;The following environment variables are injected into every step:&lt;/p&gt;
+
+&lt;h4 id=&#34;build-environment-variables&#34;&gt;Build Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_AUTHOR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_AUTHOR_EMAIL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat@github.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;author email from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_BRANCH&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_CHANNEL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_COMMIT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;7fd1a60b01f91b314f59955a4e4d4e80d8edf11d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;commit sha from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_CREATED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556720958&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build creation time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_ENQUEUED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build enqueue time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_EVENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;push&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;webhook event that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_FINISHED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730045&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build completion time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_HOST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-worker-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the worker the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_LINK&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://vela-server.localhost/octocat/hello-world/1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;link to the build in the UI&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_MESSAGE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Merge pull request #6 from octocat/patch-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;message from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;build number&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_PARENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;previous build number&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_PULL_REQUEST_NUMBER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;pull request number is populated from the source reference&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_REF&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;refs/heads/master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;reference from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_STARTED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1556730001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unix timestamp representing build start time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_SOURCE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world/commit/7fd1a60b01f91b314f59955a4e4d4e80d8edf11d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;link from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_TITLE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;push received from https://github.com/octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;title from the source commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_WORKSPACE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/vela/src/github.com/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;working directory the build is executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_TAG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;v1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tag is populated from the source reference&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;BUILD_TARGET&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;production&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;deployment target&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BUILD_LINK&lt;/code&gt; is not populated if the Vela server is configured to run headless (no UI).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BUILD_PULL_REQUEST_NUMBER&lt;/code&gt; is only populated during &lt;code&gt;pull_request&lt;/code&gt; events.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BUILD_TAG&lt;/code&gt; is only populated during &lt;code&gt;tag&lt;/code&gt; events.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BUILD_TARGET&lt;/code&gt; is only populated during &lt;code&gt;deployment&lt;/code&gt; events.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;vela-environment-variables&#34;&gt;Vela Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;environment is Vela&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_ADDR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-server.localhost&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the Vela server&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_CHANNEL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_DATABASE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;postgres&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;database Vela is connected to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_HOST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela-worker-1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fully qualified domain name of the worker the build was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_QUEUE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;redis&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_RUNTIME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;docker&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime environment build was executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_SOURCE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;github&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;queue channel the build was published to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_VERSION&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;v0.1.0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Vela version&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VELA_WORKSPACE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/vela/src/github.com/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;working directory the build is executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;CI&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vela&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;CI enabled is Vela&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;repository-environment-variables&#34;&gt;Repository Environment Variables&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Explanation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_BRANCH&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;master&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;default branch of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_CLONE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world.git&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;clone url of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_FULL_NAME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full name of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_LINK&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://github.com/octocat/hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;direct url of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_NAME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hello-world&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_ORG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;octocat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org of the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_PRIVATE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;privacy setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_TIMEOUT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;60&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;timeout setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;REPOSITORY_TRUSTED&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;trusted setting for the repository&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Executor</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/executor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/worker/executor/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;executor&lt;/code&gt; component is one of the worker components for Vela.&lt;/p&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Flavor</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/worker/flavor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/worker/flavor/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;flavor&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/flavor/&#34;&gt;template&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to route your build to a single flavors within a Vela cluster.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+worker:
+&lt;span style=&#34;color:#00a000&#34;&gt;+  flavor: large
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start and run on a worker with the available route &lt;code&gt;large&lt;/code&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Hook</title>
+      <link>https://go-vela.github.io/docs/concepts/system/hook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/hook/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;hook&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;hook&lt;/code&gt; is defined as a single, webhook object received from a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/repo/&#34;&gt;repo&lt;/a&gt; in the source control provider prompting Vela to perform an action.&lt;/p&gt;
+
+&lt;p&gt;In most cases, processing a hook involves fetching the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; from the repo and triggering a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;From &lt;a href=&#34;https://help.github.com/en/github/extending-github/about-webhooks&#34; target=&#34;_blank&#34;&gt;GitHub&amp;rsquo;s webhook documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;branch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the commit that triggered the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build created from the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the hook was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during hook processing&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;event&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;event from the commit that triggered the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the hook was received from&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for hook in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;link&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to hook from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for hook triggered from the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the hook&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for hook from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;hooks&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/build/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/build/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/build/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Image</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/image/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/image/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;image&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the &lt;a href=&#34;https://docs.docker.com/engine/docker-overview/#images&#34; target=&#34;_blank&#34;&gt;Docker image&lt;/a&gt; used to create the ephemeral container.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All Vela services will require an &lt;code&gt;image&lt;/code&gt; declaration to be provided.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Any valid &lt;a href=&#34;https://docs.docker.com/engine/docker-overview/#images&#34; target=&#34;_blank&#34;&gt;Docker image&lt;/a&gt; in any publicly accessible &lt;a href=&#34;https://docs.docker.com/registry/&#34; target=&#34;_blank&#34;&gt;Docker registry&lt;/a&gt; can be used for the container.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;latest&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;library/golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;index.docker.io/library/golang&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;index.docker.io/library/golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All the above images would pull an image from the &lt;a href=&#34;https://hub.docker.com/_/golang&#34; target=&#34;_blank&#34;&gt;golang Docker repository&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+&lt;span style=&#34;color:#00a000&#34;&gt;+    image: postgres:12
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    pull: true
+
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Image</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/image/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/image/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;image&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the &lt;a href=&#34;https://docs.docker.com/engine/docker-overview/#images&#34; target=&#34;_blank&#34;&gt;Docker image&lt;/a&gt; used to create the ephemeral container.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All Vela steps will require an &lt;code&gt;image&lt;/code&gt; declaration to be provided.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;p&gt;Any valid &lt;a href=&#34;https://docs.docker.com/engine/docker-overview/#images&#34; target=&#34;_blank&#34;&gt;Docker image&lt;/a&gt; in any publicly accessible &lt;a href=&#34;https://docs.docker.com/registry/&#34; target=&#34;_blank&#34;&gt;Docker registry&lt;/a&gt; can be used for the container.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;latest&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;library/golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;index.docker.io/library/golang&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;image&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;index.docker.io/library/golang&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1.12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All the above images would pull an image from the &lt;a href=&#34;https://hub.docker.com/_/golang&#34; target=&#34;_blank&#34;&gt;golang Docker repository&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+&lt;span style=&#34;color:#00a000&#34;&gt;+    image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go test ./...
+
+  - name: build
+&lt;span style=&#34;color:#00a000&#34;&gt;+    image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Key</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/secrets/key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/secrets/key/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/secrets/&#34;&gt;secret&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the path to the secret to fetch from the storage backend.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component inherits a default value from the secret &lt;code&gt;name&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+secrets:
+  - name: username
+    engine: native
+&lt;span style=&#34;color:#00a000&#34;&gt;+   key: github/octocat/username
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    type: repo
+
+  - name: password
+    engine: native
+&lt;span style=&#34;color:#00a000&#34;&gt;+   key: github/octocat/password
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    type: repo
+
+steps:
+  - name: test
+    image: golang
+    secrets: [ username, password ]
+    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${USERNAME}&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;password ${PASSWORD}&amp;#34; &amp;gt; .netrc
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This pipeline will allow the following secrets to be referenced:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;username&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;password&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This pipeline will also add the following environment variables to the &lt;code&gt;test&lt;/code&gt; step:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;USERNAME=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PASSWORD=&amp;lt;value&amp;gt;&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Log</title>
+      <link>https://go-vela.github.io/docs/concepts/system/log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/log/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;log&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;log&lt;/code&gt; is defined as a sequence of records about the actions performed by a worker in a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/build/&#34;&gt;build&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build the log entry is for&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;data&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]byte&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;raw data from the log entry&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for log in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;service_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for service the log entry is for&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;step_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for step the log entry is for&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;logs&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;API
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/build/logs/&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/service/logs/&#34;&gt;Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/step/logs/&#34;&gt;Step&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/log/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;Go&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/build/logs/&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/service/logs/&#34;&gt;Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/step/logs/&#34;&gt;Step&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Metadata</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/metadata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/metadata/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;metadata&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows extra information to be passed to the pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables compiling the pipeline as a template&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for a &lt;code&gt;metadata&lt;/code&gt; declaration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+  template: false
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Needs</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/stages/needs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/stages/needs/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;needs&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/stages/&#34;&gt;stage&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide other stages that must complete before starting the current one.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+stages:
+  test:
+    steps:
+      - name: test
+        image: golang
+        commands:
+          - go test ./...
+  build:
+&lt;span style=&#34;color:#00a000&#34;&gt;+    needs: [ test ]
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    steps:
+      - name: build
+        image: golang
+        commands:
+          - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; stage first, then run the &lt;code&gt;build&lt;/code&gt; stage.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Origin</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/secrets/origin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/secrets/origin/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;origin&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/secrets/&#34;&gt;secret&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to pull secrets from non-internal secret providers via plugins.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+To see what plugins are supported and how they integrate with the Vela build lifecycle see the &lt;a href=&#34;https://go-vela.github.io/docs/docs/plugins/secrets/&#34;&gt;plugins page&lt;/a&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+secrets:
+  # Implicit secret definition.
+  - name: vault_token
+
+&lt;span style=&#34;color:#00a000&#34;&gt;+  - origin:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+     name: vault external secrets
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+     image: target/secret-vault
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+     secrets: [ vault_token ]
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+     parameters:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+       addr: vault.company.com
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+       auth_method: token
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+       username: octocat
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+       items:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+         - source: secret/vela
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+           path: user
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    secrets: [ username, password ]
+    commands:
+      - cat /vela/secrets/user/name
+      - cat /vela/secrets/user/password
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+To see more information on the Vault plugin usage see the &lt;a href=&#34;docs/plugins/secret/registry/vault&#34; target=&#34;_blank&#34;&gt;Vault docs&lt;/a&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Parameters</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/parameters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/parameters/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;parameters&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide extra configuration variables for a plugin.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: plugin
+    image: target/vela-docker:v0.1.0
+    pull: true
+&lt;span style=&#34;color:#00a000&#34;&gt;+    parameters:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      registry: index.docker.io
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      repo: index.docker.io/octocat/hello-world
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will add the following environment variables to the &lt;code&gt;plugin&lt;/code&gt; step:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;PARAMETER_REGISTRY=index.docker.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PARAMETER_REPO=index.docker.io/octocat/hello-world&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Platform</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/worker/platform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/worker/platform/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;platform&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/platform/&#34;&gt;template&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to route your build to a single platform within a Vela cluster.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+worker:
+&lt;span style=&#34;color:#00a000&#34;&gt;+  platform: docker
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start and run on a worker with the available route &lt;code&gt;docker&lt;/code&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Plugin</title>
+      <link>https://go-vela.github.io/docs/concepts/plugin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/plugin/</guid>
+      <description>
+        
+        
+        &lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Ports</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/ports/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/ports/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;ports&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide a list of ports to map for the container in the pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    ports:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - &amp;#34;5432:5432&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Privileged</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/privileged/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/privileged/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;privileged&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to run the container with extra privileges.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    privileged: true
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    privileged: true
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Pull</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/services/pull/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/services/pull/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;pull&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/&#34;&gt;service&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to automatically upgrade to the latest version of the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/services/image/&#34;&gt;image&lt;/a&gt;.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;Vela will always attempt to pull from its existing cache for images.&lt;/p&gt;
+
+&lt;p&gt;We recommend using the &lt;code&gt;pull&lt;/code&gt; declaration whenever possible.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+services:
+  - name: postgres
+    image: postgres:12
+&lt;span style=&#34;color:#00a000&#34;&gt;+    pull: true
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    environment:
+      DATABASE_DRIVER: postgres
+      DATABASE_CONFIG: &amp;#39;postgres://postgres@postgres:5432/postgres?sslmode=disable&amp;#39;
+    commands:
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will start the &lt;code&gt;postgres&lt;/code&gt; service first, then run the &lt;code&gt;test&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Pull</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/pull/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/pull/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;pull&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to automatically upgrade to the latest version of the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/image/&#34;&gt;image&lt;/a&gt;.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;Vela will always attempt to pull from its existing cache for images.&lt;/p&gt;
+
+&lt;p&gt;We recommend using the &lt;code&gt;pull&lt;/code&gt; declaration whenever possible.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    pull: true
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    pull: true
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Queue</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/queue/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;queue&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for publishing workloads to be completed by a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/infrastructure/worker/&#34;&gt;worker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_DRIVER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of client to control and operate queue&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_CONFIG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full connection string to queue&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.cluster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_CLUSTER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;configures the client for a queue cluster&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;queue.routes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;QUEUE_ROUTES&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique channels for publishing workloads&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;QUEUE_DRIVER&lt;/code&gt; - type of client to control and operate queue&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VELA_QUEUE_DRIVER&lt;/code&gt; - type of client to control and operate queue
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;drivers&#34;&gt;Drivers&lt;/h4&gt;
+
+&lt;p&gt;The following drivers are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Documentation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;redis&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a Redis queue for workloads&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://redis.io&#34; target=&#34;_blank&#34;&gt;https://redis.io&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;kafka&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a Kafka queue for workloads&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://kafka.apache.org&#34; target=&#34;_blank&#34;&gt;https://kafka.apache.org&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+Kafka is not fully supported. Using Kafka is coming soon!
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;limitations&#34;&gt;Limitations&lt;/h2&gt;
+
+&lt;p&gt;These are the known limitations for this component:&lt;/p&gt;
+
+&lt;h4 id=&#34;backups&#34;&gt;Backups&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not perform any backups of data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;creation&#34;&gt;Creation&lt;/h4&gt;
+
+&lt;p&gt;By default, Vela &lt;strong&gt;does not create your database in the system&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Currently, this functionality is considered out of scope for the project and should be the responsibility of the admins of the database installation.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+We recommend reviewing any available third party tools provided by the vendor to achieve this functionality.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Queue</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/worker/queue/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;queue&lt;/code&gt; component is one of the worker components for Vela.&lt;/p&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Repo</title>
+      <link>https://go-vela.github.io/docs/concepts/system/repo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/repo/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;repo&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;repo&lt;/code&gt; is defined as the upstream dependency from the source control provider used to store code and trigger &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/hook/&#34;&gt;hooks&lt;/a&gt; to Vela.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;From &lt;a href=&#34;https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repositories&#34; target=&#34;_blank&#34;&gt;GitHub&amp;rsquo;s repository documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A repository is like a folder for your project. Your project&amp;rsquo;s repository contains all of your project&amp;rsquo;s files and stores each file&amp;rsquo;s revision history. You can also discuss and manage your project&amp;rsquo;s work within the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;active&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the current status of the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_comment&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;comment&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_deploy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;deployment&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_pull&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;pull_request&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_push&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;push&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_tag&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable builds to be triggered for the &lt;code&gt;tag&lt;/code&gt; event&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;branch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;branch from the commit&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;that triggered the build&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;clone&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full clone url for the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;full_name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique full name (&lt;code&gt;&amp;lt;org&amp;gt;/&amp;lt;repo&amp;gt;&lt;/code&gt;) for the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;hash&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique secret hash generated by the system for the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;link&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to repo from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique repo name in org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;private&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies status of repo from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;timeout&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;total time allotted per build execution for repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;trusted&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables elevated permissions for builds executed for repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;user_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for user that activated the repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;visibility&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;access level required to view the repo in Vela&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;repos&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/repo/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/repo/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/repo/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Ruleset</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/ruleset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/ruleset/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;ruleset&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide conditions to limit the execution of the container.&lt;/p&gt;
+
+&lt;h2 id=&#34;simple&#34;&gt;Simple&lt;/h2&gt;
+
+&lt;h4 id=&#34;fields&#34;&gt;Fields&lt;/h4&gt;
+
+&lt;p&gt;The following fields are used to configure the simple version of the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;branch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of branch for build&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;comment&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;pull request comment body&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;event&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of event for build&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;path&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;path to workspace files for build&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of repo for build&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of status for build&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tag&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of reference for build&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;target&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of deployment target for build&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;syntax&#34;&gt;Syntax&lt;/h4&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the simple version of the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    ruleset:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      branch: master
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      event: push
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    ruleset:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      branch: master
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      event: push
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will limit the execution of the &lt;code&gt;test&lt;/code&gt; and &lt;code&gt;build&lt;/code&gt; steps to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;builds with a branch of &lt;code&gt;master&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;builds with an event of &lt;code&gt;push&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;advanced&#34;&gt;Advanced&lt;/h2&gt;
+
+&lt;h4 id=&#34;fields-1&#34;&gt;Fields&lt;/h4&gt;
+
+&lt;p&gt;The following fields are used to configure the advanced version of the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;continue&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables continuing the build if the step fails&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;if&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;limits the step execution to all rules must match&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;matcher&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;matcher to use when evaluating the ruleset&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;operator&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;operator to use when evaluating the ruleset&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;unless&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;limits the step execution to no rules can match&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;syntax-1&#34;&gt;Syntax&lt;/h4&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the advanced version of the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    ruleset:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      if:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        branch: master
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        event: push
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    ruleset:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      unless:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        branch: master
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        event: push
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This pipeline will limit the execution of the &lt;code&gt;test&lt;/code&gt; step to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;builds with a branch of &lt;code&gt;master&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;builds with an event of &lt;code&gt;push&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This pipeline will also limit the execution of the &lt;code&gt;build&lt;/code&gt; step to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;builds without a branch of &lt;code&gt;master&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;builds without an event of &lt;code&gt;push&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;ruleset-type-appendix&#34;&gt;Ruleset type Appendix&lt;/h2&gt;
+
+&lt;h4 id=&#34;branch&#34;&gt;Branch&lt;/h4&gt;
+
+&lt;p&gt;This rule type limits the execution of a step to &lt;strong&gt;matching build branches&lt;/strong&gt;. The below example will run a step if the build branch is &lt;code&gt;stage&lt;/code&gt; or &lt;code&gt;master&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;ruleset&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;branch&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;stage&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;master&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;event&#34;&gt;Event&lt;/h4&gt;
+
+&lt;p&gt;This rule type limits the execution of a step to &lt;strong&gt;matching build events&lt;/strong&gt;. The below example will run a step if the build event is &lt;code&gt;push&lt;/code&gt; or &lt;code&gt;pull_request&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;ruleset&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;event&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;push&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;pull_request&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;status&#34;&gt;Status&lt;/h4&gt;
+
+&lt;p&gt;This rule type limits the execution of a step to &lt;strong&gt;matching build statuses&lt;/strong&gt;. The below example will run a step if the build status is &lt;code&gt;failure&lt;/code&gt; or &lt;code&gt;success&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;ruleset&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;status&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;failure&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;success&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;tag&#34;&gt;Tag&lt;/h4&gt;
+
+&lt;p&gt;This rule type limits the execution of a step to &lt;strong&gt;matching build references&lt;/strong&gt;. The below example will run a step if the build ref is &lt;code&gt;dev/*&lt;/code&gt; or &lt;code&gt;test/*&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;ruleset&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;tag&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;dev/&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;*,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;test/*&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;target&#34;&gt;Target&lt;/h4&gt;
+
+&lt;p&gt;This rule type limits the execution of a step to &lt;strong&gt;matching build deployment targets&lt;/strong&gt;. The below example will run a step if the build target is &lt;code&gt;stage&lt;/code&gt; or &lt;code&gt;production&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;ruleset&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;target&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;stage&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;production&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;path&#34;&gt;Path&lt;/h4&gt;
+
+&lt;p&gt;This rule type limits the execution of a step to &lt;strong&gt;matching files changed in a repository&lt;/strong&gt;. The below example will run a step if file &lt;code&gt;README.md&lt;/code&gt;, any file of type &lt;code&gt;*.md&lt;/code&gt; in the root directory or any file in the &lt;code&gt;test/*&lt;/code&gt; directory has changed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;ruleset&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;path&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;README.md&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;*.md&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;test/*&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;comment&#34;&gt;Comment&lt;/h4&gt;
+
+&lt;p&gt;This rule type limits the execution of a step to &lt;strong&gt;matching a pull request comment&lt;/strong&gt;. This extends the ability to start new builds through interactions within a pull request. The below example will run a step if a &amp;ldquo;run build&amp;rdquo; comment is added to the bottom of a pull request.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;ruleset&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;event&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;comment&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;comment&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;run build&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Runtime</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/runtime/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/worker/runtime/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;runtime&lt;/code&gt; component is one of the worker components for Vela.&lt;/p&gt;
+
+&lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Secret</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/secret/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/secret/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;secret&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for storing and accessing &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/system/secret/&#34;&gt;secrets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vault.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SECRET_VAULT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables the Vault secret engine&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vault.addr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SECRET_VAULT_ADDR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to Vault installation&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vault.token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SECRET_VAULT_TOKEN&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;token required to read/write secrets to Vault&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SECRET_VAULT&lt;/code&gt; - enables the Vault secret engine&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VELA_SECRET_VAULT&lt;/code&gt; - enables the Vault secret engine
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Secret</title>
+      <link>https://go-vela.github.io/docs/concepts/system/secret/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/secret/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;secret&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;secret&lt;/code&gt; is defined as a piece of sensitive data or information that you want to tightly control access to. These are extremely useful when trying to avoid providing the data in plain text. They typically include&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+The following list are some examples of secrets:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;API keys&lt;/li&gt;
+&lt;li&gt;certificates&lt;/li&gt;
+&lt;li&gt;passwords&lt;/li&gt;
+&lt;li&gt;tokens&lt;/li&gt;
+&lt;li&gt;much, much more&amp;hellip;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;allow_command&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enable injecting a secret with a &lt;code&gt;commands&lt;/code&gt; declaration&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;events&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;whitelist of events permitted to access the secret&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for secret in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;images&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;whitelist of images permitted to access the secret&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the secret&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique repo name in org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;team&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique team name in org from source control provider&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;type&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of secret to store in the storage backend&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sensitive data or information stored in the backend&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;secrets&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;types&#34;&gt;Types&lt;/h4&gt;
+
+&lt;p&gt;The following types are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to any repository in an organization&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to a single repository in an organization&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;shared&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to any repository in the installation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h6 id=&#34;org&#34;&gt;Org&lt;/h6&gt;
+
+&lt;p&gt;Secrets with an &lt;code&gt;org&lt;/code&gt; type are accessible by any repository in an organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to have &lt;code&gt;admin&lt;/code&gt; access to the organization.
+&lt;/div&gt;
+
+
+&lt;h6 id=&#34;repo&#34;&gt;Repo&lt;/h6&gt;
+
+&lt;p&gt;Secrets with a &lt;code&gt;repo&lt;/code&gt; type are accessible by a single repository in an organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to have &lt;code&gt;admin&lt;/code&gt; access to the repository.
+&lt;/div&gt;
+
+
+&lt;h6 id=&#34;shared&#34;&gt;Shared&lt;/h6&gt;
+
+&lt;p&gt;Secrets with a &lt;code&gt;shared&lt;/code&gt; type are accessible by any repository in the Vela installation.&lt;/p&gt;
+
+&lt;p&gt;These secrets are unique, because they require a team to exist in your organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to be a member of the team in the organization.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/secret/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/secret/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/secret/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Secrets</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/secrets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/secrets/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;secrets&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide sensitive variables injected into the container environment.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+Any variable provided with this declaration will be injected into the container as an upper case variable.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;simple&#34;&gt;Simple&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the simple version of the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    secrets: [ git_username, git_password ]
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${GIT_USERNAME}&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;password ${GIT_PASSWORD}&amp;#34; &amp;gt; .netrc
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    secrets: [ git_username, git_password ]
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${GIT_USERNAME}&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;password ${GIT_PASSWORD}&amp;#34; &amp;gt; .netrc
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This pipeline will add the following environment variables to the &lt;code&gt;test&lt;/code&gt; and &lt;code&gt;build&lt;/code&gt; steps:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GIT_USERNAME=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GIT_PASSWORD=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This pipeline will also execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;advanced&#34;&gt;Advanced&lt;/h2&gt;
+
+&lt;h4 id=&#34;fields&#34;&gt;Fields&lt;/h4&gt;
+
+&lt;p&gt;The following fields are used to configure the advanced version of the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret from pipeline to rename for step&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;target&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;target name for variable to inject for step&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;syntax&#34;&gt;Syntax&lt;/h4&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the advanced version of the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    secrets:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - source: username
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        target: git_username
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - source: password
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        target: git_password
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${GIT_USERNAME}&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;password ${GIT_PASSWORD}&amp;#34; &amp;gt; .netrc
+      - go test ./...
+
+  - name: build
+    image: golang
+&lt;span style=&#34;color:#00a000&#34;&gt;+    secrets:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - source: username
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        target: git_username
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - source: password
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        target: git_password
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${GIT_USERNAME}&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;password ${GIT_PASSWORD}&amp;#34; &amp;gt; .netrc
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This pipeline will add the following environment variables to the &lt;code&gt;test&lt;/code&gt; and &lt;code&gt;build&lt;/code&gt; steps:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GIT_USERNAME=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GIT_PASSWORD=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This pipeline will also execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Service</title>
+      <link>https://go-vela.github.io/docs/concepts/system/service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/service/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;service&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;service&lt;/code&gt; is defined as a detached (headless), execution instruction for a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each service is executed inside an ephemeral &lt;a href=&#34;https://www.docker.com/resources/what-container&#34; target=&#34;_blank&#34;&gt;Docker container&lt;/a&gt; and starts at the beginning of a pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build the service executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the service was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;distribution&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;operating system the service was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during service execution time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;exit_code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;return code received from the service execution&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;finished&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was completed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the service was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for service in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Docker image used to create the service&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the service for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for service for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;runtime&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime the service was executed with&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;started&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the service was started&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;services&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/service/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/service/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/service/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Source</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/source/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;source&lt;/code&gt; component is one of the server components for Vela.&lt;/p&gt;
+
+&lt;p&gt;This component defines the system Vela uses for integrating with the source code.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This system is often referred to as a &amp;ldquo;version control system&amp;rdquo; or &amp;ldquo;source control provider&amp;rdquo;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;The following options are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Environment&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.driver&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_DRIVER&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;type of client to control and operate source&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.url&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_URL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;full navigatable url to source system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.client&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_CLIENT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;OAuth client ID for source system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.secret&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_SECRET&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;OAuth client secret for source system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source.context&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SOURCE_CONTEXT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;message to set in commit status for source system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+All available options support &lt;code&gt;VELA_*&lt;/code&gt; prefixes for the environment variables. For example:
+* &lt;code&gt;SOURCE_DRIVER&lt;/code&gt; - type of client to control and operate queue
+* &lt;code&gt;VELA_SOURCE_DRIVER&lt;/code&gt; - type of client to control and operate queue
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;drivers&#34;&gt;Drivers&lt;/h4&gt;
+
+&lt;p&gt;The following drivers are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Documentation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;github&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a GitHub instance for source control&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/about&#34; target=&#34;_blank&#34;&gt;https://github.com/about&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;gitlab&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uses a GitLab instance for source control&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://about.gitlab.com&#34; target=&#34;_blank&#34;&gt;https://about.gitlab.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+GitLab is not fully supported. Using GitLab is coming soon!
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Source</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/templates/source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/templates/source/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;source&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/templates/&#34;&gt;template&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the path to the template in the remote system.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+templates
+  - name: template
+&lt;span style=&#34;color:#00a000&#34;&gt;+    source: github.com/vela/atlas/cmd
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;    type: github
+
+steps:
+  - name: test
+    template:
+      name: template
+      vars:
+        cmd: go test ./...
+
+  - name: build
+    template:
+      name: template
+      vars:
+        cmd: go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Step</title>
+      <link>https://go-vela.github.io/docs/concepts/system/step/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/step/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;step&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;step&lt;/code&gt; is defined as a sequential, execution instruction for a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each step is executed inside an ephemeral &lt;a href=&#34;https://www.docker.com/resources/what-container&#34; target=&#34;_blank&#34;&gt;Docker container&lt;/a&gt; and are always executed in the order they are defined.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for build the step executed in&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;created&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the step was created&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;distribution&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;operating system the step was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;error&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;error message received during step execution time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;exit_code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;return code received from the step execution&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;finished&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the build was completed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;host&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;hostname the step was executed on&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for step in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Docker image used to create the step&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the step for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for step for the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo_id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for repo that triggered the build&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;runtime&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;runtime the step was executed with&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;started&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UNIX timestamp for when the step was started&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the end condition for the step&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;stage&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;name of the stage the step was executed in&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;steps&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/step/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/cli/step/&#34;&gt;CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SDK
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/sdk/go/step/&#34;&gt;Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Steps</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/stages/steps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/stages/steps/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;steps&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/stages/&#34;&gt;stage&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide sequential, execution instructions for a stage.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+For more information, you can visit the &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;steps documentation&lt;/a&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+stages:
+  test:
+&lt;span style=&#34;color:#00a000&#34;&gt;+    steps:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - name: test
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+          - go test ./...
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;  build:
+&lt;span style=&#34;color:#00a000&#34;&gt;+    steps:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      - name: build
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        image: golang
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        commands:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+          - go build
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; stage and the &lt;code&gt;build&lt;/code&gt; stage at the same time.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Template</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/steps/template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/steps/template/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;template&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/steps/&#34;&gt;step&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the name of template to expand in the pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields are used to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Required&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for the template in the pipeline&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vars&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;variables injected into the template&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+templates
+  - name: template
+    source: github.com/vela/atlas/cmd
+    type: github
+
+steps:
+  - name: test
+&lt;span style=&#34;color:#00a000&#34;&gt;+    template:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      name: template
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      vars:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        cmd: go test ./...
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+  - name: build
+&lt;span style=&#34;color:#00a000&#34;&gt;+    template:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      name: template
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+      vars:
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+        cmd: go build
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Template</title>
+      <link>https://go-vela.github.io/docs/concepts/template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/template/</guid>
+      <description>
+        
+        
+        &lt;p&gt;COMING SOON!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Type</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/secrets/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/secrets/type/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;type&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/secrets/&#34;&gt;secret&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the type of secret to fetch from the storage backend.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component has a default value of &lt;code&gt;repo&lt;/code&gt;.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;p&gt;The following options are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;org&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to any repository in an organization&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to a single repository in an organization&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;shared&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;secret scoped to any repository in the installation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;org&#34;&gt;Org&lt;/h4&gt;
+
+&lt;p&gt;Secrets with an &lt;code&gt;org&lt;/code&gt; type are accessible by any repository in an organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to have &lt;code&gt;admin&lt;/code&gt; access to the organization.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;repo&#34;&gt;Repo&lt;/h4&gt;
+
+&lt;p&gt;Secrets with a &lt;code&gt;repo&lt;/code&gt; type are accessible by a single repository in an organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to have &lt;code&gt;admin&lt;/code&gt; access to the repository.
+&lt;/div&gt;
+
+
+&lt;h4 id=&#34;shared&#34;&gt;Shared&lt;/h4&gt;
+
+&lt;p&gt;Secrets with a &lt;code&gt;shared&lt;/code&gt; type are accessible by any repository in the Vela installation.&lt;/p&gt;
+
+&lt;p&gt;These secrets are unique, because they require a team to exist in your organization.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This secret type requires you to be a member of the team in the organization.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+secrets:
+  - name: username
+    engine: native
+    key: github/octocat/username
+&lt;span style=&#34;color:#00a000&#34;&gt;+   type: repo
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+  - name: password
+    engine: native
+    key: github/octocat/password
+&lt;span style=&#34;color:#00a000&#34;&gt;+   type: repo
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    image: golang
+    secrets: [ username, password ]
+    commands:
+      - echo &amp;#34;machine github.com&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;login ${USERNAME}&amp;#34; &amp;gt; .netrc
+      - echo &amp;#34;password ${PASSWORD}&amp;#34; &amp;gt; .netrc
+      - go test ./...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;This pipeline will allow the following secrets to be referenced:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;username&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;password&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This pipeline will also add the following environment variables to the &lt;code&gt;test&lt;/code&gt; step:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;USERNAME=&amp;lt;value&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PASSWORD=&amp;lt;value&amp;gt;&lt;/code&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Type</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/templates/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/templates/type/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;type&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/templates/&#34;&gt;template&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the type of template provided from the remote system.&lt;/p&gt;
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;p&gt;The following options are available to configure the component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;github&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;fetches the template from a GitHub or GitHub Enterprise instance&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;github&#34;&gt;GitHub&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;github&lt;/code&gt; template type is designed to fetch templates from &lt;a href=&#34;https://github.com&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt; or &lt;a href=&#34;https://github.com/enterprise&#34; target=&#34;_blank&#34;&gt;GitHub Enterprise&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for the component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;version: &amp;#34;1&amp;#34;
+
+metadata:
+  template: false
+
+templates
+  - name: template
+    source: github.com/vela/atlas/cmd
+&lt;span style=&#34;color:#00a000&#34;&gt;+    type: github
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+steps:
+  - name: test
+    template:
+      name: template
+      vars:
+        cmd: go test ./...
+
+  - name: build
+    template:
+      name: template
+      vars:
+        cmd: go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This pipeline will execute the &lt;code&gt;test&lt;/code&gt; step first, then run the &lt;code&gt;build&lt;/code&gt; step.
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: User</title>
+      <link>https://go-vela.github.io/docs/concepts/system/user/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/system/user/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;user&lt;/code&gt; component is part of the core system components for Vela.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;user&lt;/code&gt; is defined as a personal account granted to each individual who registers in Vela.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;The following fields make up this component:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;active&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;signifies the current status of the user&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;admin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;enables elevated permissions for builds executed for repo&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;favorites&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[]string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;whitelist of repos the user favorite in the UI&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;hash&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique secret hash generated by the system for the user&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique identifier for user in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique name of the user in the system&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;token&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unique access token for user account in source control provider&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+
+This component is stored in the configured Vela backend in the &lt;code&gt;users&lt;/code&gt; table.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-vela.github.io/docs/docs/api/user/&#34;&gt;API&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Version</title>
+      <link>https://go-vela.github.io/docs/concepts/pipeline/version/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/pipeline/version/</guid>
+      <description>
+        
+        
+        
+
+&lt;p&gt;The &lt;code&gt;version&lt;/code&gt; component is a part of a &lt;a href=&#34;https://go-vela.github.io/docs/docs/concepts/pipeline/&#34;&gt;pipeline&lt;/a&gt; for Vela.&lt;/p&gt;
+
+&lt;p&gt;This declaration allows you to provide the syntax version used to evaluate the pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+All Vela pipelines will require a &lt;code&gt;version&lt;/code&gt; declaration to be provided.
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;The following is an example of valid syntax for a &lt;code&gt;version&lt;/code&gt; declaration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+version: &amp;#34;1&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;&lt;/span&gt;
+metadata:
+  template: false
+
+steps:
+  - name: test
+    image: golang
+    commands:
+      - go test ./...
+
+  - name: build
+    image: golang
+    commands:
+      - go build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

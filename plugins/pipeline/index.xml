@@ -1,0 +1,55 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Pipeline</title>
+    <link>https://go-vela.github.io/docs/plugins/pipeline/</link>
+    <description>Recent content in Pipeline on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/plugins/pipeline/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Plugins: Registry</title>
+      <link>https://go-vela.github.io/docs/plugins/pipeline/registry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/plugins/pipeline/registry/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Plugins: Tutorials</title>
+      <link>https://go-vela.github.io/docs/plugins/pipeline/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/plugins/pipeline/tutorials/</guid>
+      <description>
+        
+        
+        &lt;p&gt;An example of these tutorials exist in our &lt;a href=&#34;https://github.com/go-vela/vela-tutorials/tree/master/plugins&#34; target=&#34;_blank&#34;&gt;go-vela/vela-tutorials&lt;/a&gt; repository.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+&lt;p&gt;We recommend reviewing &lt;a href=&#34;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&#34; target=&#34;_blank&#34;&gt;Docker&amp;rsquo;s best practices&lt;/a&gt; before attempting to create a custom plugin.&lt;/p&gt;
+
+&lt;p&gt;We recommend that all plugins be placed inside a &lt;a href=&#34;https://hub.docker.com/_/scratch&#34; target=&#34;_blank&#34;&gt;scratch image&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

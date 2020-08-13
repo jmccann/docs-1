@@ -1,0 +1,59 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vela – Infrastructure</title>
+    <link>https://go-vela.github.io/docs/concepts/infrastructure/</link>
+    <description>Recent content in Infrastructure on Vela</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://go-vela.github.io/docs/concepts/infrastructure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Concepts: Server</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/server/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;server&lt;/code&gt; application is one of the infrastructure components for Vela.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: UI</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/ui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/ui/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;ui&lt;/code&gt; application is one of the infrastructure components for Vela.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Concepts: Worker</title>
+      <link>https://go-vela.github.io/docs/concepts/infrastructure/worker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://go-vela.github.io/docs/concepts/infrastructure/worker/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The &lt;code&gt;worker&lt;/code&gt; application is one of the infrastructure components for Vela.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
